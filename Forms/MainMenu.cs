@@ -42,10 +42,9 @@ public partial class MainMenu : Form
 
     private void btSolo_Click(object sender, EventArgs e)
     {
-        //Program.Classic!.Show();
-        time_Rush();
-
-        //Hide();
+        Program.Classic!.Show();
+        Hide();
+        // time_Rush();
     }
 
     private void time_Rush()
@@ -103,9 +102,8 @@ public partial class MainMenu : Form
 
     private void btCoop_Click(object sender, EventArgs e)
     {
-        classic();
-        //Program.TimeRush!.Show();
-        //Hide();
+        Program.TimeRush!.Show();
+        Hide();
     }
 
     private void btPause_Click(object sender, EventArgs e)
@@ -151,7 +149,9 @@ public partial class MainMenu : Form
             if (usuario.Password == Controllers.nMD5.CreateMD5(tbPassword.Text))
             {
                 loginOk = true;
-                Close();
+                plLogin.Visible = false;
+                btCoop.Enabled = true;
+                btSolo.Enabled = true;
             }
             else
             {
