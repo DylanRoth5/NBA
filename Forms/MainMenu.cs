@@ -1,3 +1,4 @@
+using NBA.Conection;
 using NBA.Controllers;
 using NBA.Entities;
 
@@ -138,27 +139,56 @@ public partial class MainMenu : Form
 
     private void btLogin_Click(object sender, EventArgs e)
     {
-        Player u = new Player();
-
-        if (u.Password == nMD5.CreateMD5(tbPassword.Text))
+        if (pPlayer.GetAll().Any(player => player.User == tbUser.Text))
         {
-            loginOk = true;
-        }
-        else
-        {
-            if (u.User.Length == 0)
+            var p = pPlayer.GetAll().Find(player => player.User == tbUser.Text);
+            
+            // if (u.Password == nMD5.CreateMD5(tbPassword.Text))
+            if (tbPassword.Text == p!.Password)
             {
-                loginOk = false;
-                MessageBox.Show("Usuario inexistente. ");
-                tbUser.Focus();
+                loginOk = true;
+                plLogin.Visible = false;
+                btCoop.Enabled = true;
+                btSolo.Enabled = true;
             }
             else
             {
-                loginOk = false;
-                MessageBox.Show("Clave Incorrecta. ");
-                tbPassword.Focus();
-            }
+                if (tbUser.Text.Length == 0)
+                {
+                    loginOk = false;
+                    MessageBox.Show("Usuario inexistente. ");
+                    tbUser.Focus();
+                }
+                else
+                {
+                    loginOk = false;
+                    MessageBox.Show("Clave Incorrecta. ");
+                    tbPassword.Focus();
+                }
 
+            }
+            
+            if (loginOk)
+            {
+                plLogin.Visible = false;
+                btCoop.Enabled = true;
+                btSolo.Enabled = true;
+            }
+            else
+            {
+                plLogin.Visible = true;
+                btLogin.Visible = true;
+                tbPassword.Visible = true;
+                tbUser.Visible = true;
+                btCoop.Enabled = false;
+                btSolo.Enabled = false;
+            }
+        }
+        else
+        {
+            loginOk = false;
+            MessageBox.Show("Usuario inexistente. ");
+            tbUser.Focus();
         }
     }
 
@@ -200,7 +230,7 @@ public partial class MainMenu : Form
             u.User = tbUserR.Text;
             u.Password = tbPasswordR.Text;
             pPlayer.Insert(u);
-            Close();
+            // Close();
         }
     }
 }
