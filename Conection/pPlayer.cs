@@ -16,8 +16,8 @@ namespace NBA.Conection
                 var a = new Player
                 {
                     Id = obdr.GetInt32(0),
-                    User = obdr.GetString(2),
-                    Password = obdr.GetString(3)
+                    User = obdr.GetString(1),
+                    Password = obdr.GetString(2)
                 };
                 players.Add(a);
             }
@@ -35,8 +35,8 @@ namespace NBA.Conection
             {
 
                 a.Id = obdr.GetInt32(0);
-                a.User = obdr.GetString(2);
-                a.Password = obdr.GetString(3);
+                a.User = obdr.GetString(1);
+                a.Password = obdr.GetString(2);
             }
             return a;
         }
@@ -52,8 +52,8 @@ namespace NBA.Conection
             {
 
                 a.Id = obdr.GetInt32(0);
-                a.User = obdr.GetString(2);
-                a.Password = obdr.GetString(3);
+                a.User = obdr.GetString(1);
+                a.Password = obdr.GetString(2);
             }
             return a;
         }

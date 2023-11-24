@@ -143,7 +143,7 @@ public partial class MainMenu : Form
         Player usuario = pPlayer.GetByUsername(tbUser.Text);
         if (usuario.User == null)
         {
-            MessageBox.Show("El usuario no existe!!!");
+            MessageBox.Show("El usuario no existe");
             tbUser.Focus();
         }
         else
@@ -151,7 +151,9 @@ public partial class MainMenu : Form
             if (usuario.Password == Controllers.nMD5.CreateMD5(tbPassword.Text))
             {
                 loginOk = true;
-                Close();
+                plLogin.Visible = false;
+                btCoop.Enabled = true;
+                btSolo.Enabled = true;
             }
             else
             {
@@ -167,9 +169,6 @@ public partial class MainMenu : Form
         btRegister.Visible = true;
         tbUserR.Visible = true;
         tbPasswordR.Visible = true;
-        btLogin.Visible = false;
-        tbPassword.Visible = false;
-        tbUser.Visible = false;
     }
 
     private void llRegister_MouseEnter(object sender, EventArgs e)
@@ -191,16 +190,18 @@ public partial class MainMenu : Form
     {
         if (tbUserR.Text.Length == 0 || tbPasswordR.Text.Length == 0)
         {
-            MessageBox.Show("Ingrese todos los datos. ");
+            MessageBox.Show("Ingrese todos los datos");
         }
         else
         {
             //guardo
             Player u = new Player();
             u.User = tbUserR.Text;
-            u.Password = tbPasswordR.Text;
+            u.Password = nMD5.CreateMD5(tbPassword.Text);
             pPlayer.Insert(u);
-            // Close();
+            plLogin.Visible = false;
+            btCoop.Enabled = true;
+            btSolo.Enabled = true;
         }
     }
 }

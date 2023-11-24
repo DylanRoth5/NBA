@@ -16,8 +16,8 @@ static class Program
     {
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.
-        Conexion.OpenConnection();
         ApplicationConfiguration.Initialize();
+        Conexion.OpenConnection();
         MainMenu = new MainMenu();
         Classic = new Classic();
         TimeRush = new TimeRush();
