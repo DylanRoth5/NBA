@@ -74,21 +74,21 @@ public partial class Classic : Form
                 // Cambiar el color del botón según el valor en la matriz del mapa del enemigo
                 if (emap.Matrix[coords2[0], coords2[1]] == Map.Ship)
                 {
-                    butn.BackColor = Color.Cyan;
+                    butn.BackColor = Color.FromArgb(150,50,100,250);
                 }
                 else if (emap.Matrix[coords2[0], coords2[1]] == Map.WreckedShip)
                 {
-                    butn.BackColor = Color.Red;
+                    butn.BackColor = Color.FromArgb(150,150,10,50);
                     butn.Enabled = false; 
                 }
                 else if (emap.Matrix[coords2[0], coords2[1]] == Map.FailedMissile)
                 {
-                    butn.BackColor = Color.Blue;
+                    butn.BackColor = Color.FromArgb(150,25,50,200);
                     butn.Enabled = false;
                 }
                 else
                 {
-                    butn.BackColor = Color.Cyan;
+                    butn.BackColor = Color.FromArgb(150,50,100,250);
                 }
             }
 
@@ -127,17 +127,17 @@ public partial class Classic : Form
                 }
                 else if (pmap.Matrix[coords2[0], coords2[1]] == Map.WreckedShip)
                 {
-                    butn.BackColor = Color.Red;
+                    butn.BackColor = Color.FromArgb(150,150,10,50);
                     butn.Enabled = false;
                 }
                 else if (pmap.Matrix[coords2[0], coords2[1]] == Map.FailedMissile)
                 {
-                    butn.BackColor = Color.Blue;
+                    butn.BackColor = Color.FromArgb(150,25,50,200);
                     butn.Enabled = false;
                 }
                 else
                 {
-                    butn.BackColor = Color.Cyan;
+                    butn.BackColor = Color.FromArgb(150,50,100,250);
                 }
             }
         }
@@ -212,11 +212,11 @@ public partial class Classic : Form
                 if (pmap!.Matrix[coords2[0], coords2[1]] == Map.Ship)
                     butn.BackColor = Color.Black;
                 else if (pmap.Matrix[coords2[0], coords2[1]] == Map.WreckedShip)
-                    butn.BackColor = Color.Red;
+                    butn.BackColor = Color.FromArgb(150,150,10,50);
                 else if (pmap.Matrix[coords2[0], coords2[1]] == Map.FailedMissile)
-                    butn.BackColor = Color.Blue;
+                    butn.BackColor = Color.FromArgb(150,25,50,200);
                 else
-                    butn.BackColor = Color.Cyan;
+                    butn.BackColor = Color.FromArgb(150,50,100,250);
             }
 
             if (_biggerShip == 0 && _bigShip == 0 && _normalShip == 0 && _smolShip == 0)
@@ -342,7 +342,7 @@ public partial class Classic : Form
                     button.Name = i + ";" + j;
                     button.Text = i + @";" + j;
                     button.Click += btnCoord_Click!;
-                    button.BackColor = Color.Cyan;
+                    button.BackColor = Color.FromArgb(150,50,100,250);
                     ePanel.Controls.Add(button); // Agregar botón al panel
                     top += button.Height;
                 }
@@ -369,7 +369,7 @@ public partial class Classic : Form
                     button.Name = i + ";" + j;
                     button.Text = i + @";" + j;
                     button.Click += btnCoord_Click!;
-                    button.BackColor = Color.Cyan;
+                    button.BackColor = Color.FromArgb(150,50,100,250);
                     pPanel.Controls.Add(button); // Agregar botón al panel
                     top += button.Height;
                 }
@@ -584,6 +584,6 @@ public partial class Classic : Form
         }
 
         // Actualizar la representación visual en el panel del enemigo
-        foreach (Button btn in ePanel.Controls) btn.BackColor = Color.Cyan;
+        foreach (Button btn in ePanel.Controls) btn.BackColor = Color.FromArgb(150,50,100,250);
     }
 }
