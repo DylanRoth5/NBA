@@ -139,56 +139,26 @@ public partial class MainMenu : Form
 
     private void btLogin_Click(object sender, EventArgs e)
     {
-        if (pPlayer.GetAll().Any(player => player.User == tbUser.Text))
+        // plLogin.Visible = false;
+        Player usuario = pPlayer.GetByUsername(tbUser.Text);
+        if (usuario.User == null)
         {
-            var p = pPlayer.GetAll().Find(player => player.User == tbUser.Text);
-            
-            // if (u.Password == nMD5.CreateMD5(tbPassword.Text))
-            if (tbPassword.Text == p!.Password)
-            {
-                loginOk = true;
-                plLogin.Visible = false;
-                btCoop.Enabled = true;
-                btSolo.Enabled = true;
-            }
-            else
-            {
-                if (tbUser.Text.Length == 0)
-                {
-                    loginOk = false;
-                    MessageBox.Show("Usuario inexistente. ");
-                    tbUser.Focus();
-                }
-                else
-                {
-                    loginOk = false;
-                    MessageBox.Show("Clave Incorrecta. ");
-                    tbPassword.Focus();
-                }
-
-            }
-            
-            if (loginOk)
-            {
-                plLogin.Visible = false;
-                btCoop.Enabled = true;
-                btSolo.Enabled = true;
-            }
-            else
-            {
-                plLogin.Visible = true;
-                btLogin.Visible = true;
-                tbPassword.Visible = true;
-                tbUser.Visible = true;
-                btCoop.Enabled = false;
-                btSolo.Enabled = false;
-            }
+            MessageBox.Show("El usuario no existe!!!");
+            tbUser.Focus();
         }
         else
         {
-            loginOk = false;
-            MessageBox.Show("Usuario inexistente. ");
-            tbUser.Focus();
+            if (usuario.Password == Controllers.nMD5.CreateMD5(tbPassword.Text))
+            {
+                loginOk = true;
+                Close();
+            }
+            else
+            {
+                loginOk = false;
+                MessageBox.Show("Clave incorrecta");
+                tbPassword.Focus();
+            }
         }
     }
 

@@ -358,6 +358,7 @@
             btLogin.TabIndex = 7;
             btLogin.Text = "ACEPT";
             btLogin.UseVisualStyleBackColor = false;
+            btLogin.Click += btLogin_Click;
             // 
             // label2
             // 
