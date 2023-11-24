@@ -4,7 +4,7 @@ namespace NBA.Conection
 {
     class Conexion
     {
-        private const string Cadena = "Data Source=Navy.db";
+        private const string Cadena = "Data Source=Data.db";
 
         public static void OpenConnection()
         {
