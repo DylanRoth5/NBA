@@ -1,93 +1,377 @@
-﻿namespace NBA.Forms;
+﻿using NBA.Controllers;
+using NBA.Entities;
+using System.Reflection.Emit;
+using System.Windows.Forms;
+
+namespace NBA.Forms;
 
 public partial class TimeRush : Form
 {
-    private List<Button> _shipPossitionButtons = null!;
 
     private readonly Random _r = new();
-
-    private System.Windows.Forms.Timer _timer = null!;
-    private TimeSpan _tiempoTranscurrido;
 
     public TimeRush()
     {
         InitializeComponent();
-        initializeChronometer();
     }
 
-    private void btCoopClose_Click(object sender, EventArgs e)
+    private static Map? emap;
+
+    private static int points;
+    private static int _smolShip;
+    private static int _normalShip;
+    private static int _bigShip;
+    private static int _biggerShip;
+
+    // Variable que indica si el juego está en curso
+    private static bool _gaming;
+
+    private void btnCoord_Click(object sender, EventArgs e)
     {
-        foreach (var button in _shipPossitionButtons) button.Visible = false;
-        restartChronometer();
+        points++;
+        // Obtener el botón que activó el evento
+        var btn = (Button)sender;
+
+        // Extraer las coordenadas del nombre del botón
+        var temp = btn.Name.Split(';');
+        int[] coords = { int.Parse(temp[0]), int.Parse(temp[1]) };
+
+        // Verificar si el botón pertenece al panel del enemigo
+        if (btn.Parent == plC)
+        {
+            // Lanzar un misil en las coordenadas especificadas en el mapa del enemigo
+            emap = IMap.launchMissile(coords[0], coords[1], emap);
+
+            // Actualizar la representación visual del mapa del enemigo
+            foreach (Button butn in plC.Controls)
+            {
+                var temp2 = butn.Name.Split(';');
+                int[] coords2 = { int.Parse(temp2[0]), int.Parse(temp2[1]) };
+
+                // Cambiar el color del botón según el valor en la matriz del mapa del enemigo
+                if (emap.Matrix[coords2[0], coords2[1]] == Map.Ship)
+                {
+                    butn.BackColor = Color.FromArgb(150, 50, 100, 250);
+                }
+                else if (emap.Matrix[coords2[0], coords2[1]] == Map.WreckedShip)
+                {
+                    butn.BackColor = Color.FromArgb(150, 150, 10, 50);
+                    butn.Enabled = false;
+                }
+                else if (emap.Matrix[coords2[0], coords2[1]] == Map.FailedMissile)
+                {
+                    butn.BackColor = Color.FromArgb(150, 25, 50, 200);
+                    butn.Enabled = false;
+                }
+                else
+                {
+                    butn.BackColor = Color.FromArgb(150, 50, 100, 250);
+                }
+            }
+        }
+
+        if (IMap.hasShips(emap)) return;
+        plC.Visible = false;
+        pPanel.Visible = false;
+        ll7.Visible = true;
+        label6.Visible = true;
+        ll7.Text = @"You Won";
+        label6.Text = @$"Score: {points}"; 
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        emap = new Map();
+        // Crear nuevos mapas para el enemigo y el jugador con el tamaño seleccionado
+        emap = new Map(int.Parse(numericUpDown1.Value.ToString()));
+
+        // Limpiar los mapas recién creados
+        emap = IMap.cleanMap(emap);
+
+        // Configuración inicial de la interfaz gráfica
+        plC.Visible = true;
+        ll7.Visible = false;
+        label6.Visible = false;
+
+        // Configurar el tamaño de los paneles según el tamaño de los mapas
+        var height = Size.Width / (17 + emap.Size);
+        var width = Size.Width / (17 + emap.Size);
+        plC.Size = new Size(width * emap.Size + 20, height * emap.Size + 20);
+
+        // Inicializar contadores de barcos según los valores de los controles numericos
+        _smolShip = int.Parse(numericUpDown2.Value.ToString());
+        _normalShip = int.Parse(numericUpDown3.Value.ToString());
+        _bigShip = int.Parse(numericUpDown4.Value.ToString());
+        _biggerShip = int.Parse(numericUpDown5.Value.ToString());
+
+        // Verificar si el juego aún no ha comenzado
+        if (!_gaming)
+        {
+            points = 0;
+            // Configuración de la interfaz para el inicio del juego
+            button1.Text = @"End Game";
+            plC.Enabled = true;
+            _gaming = true;
+
+            // Configuración de la interfaz para el mapa del enemigo
+            var top = 10;
+            var left = 10;
+            for (var i = 0; i < emap.Size; i++)
+            {
+                for (var j = 0; j < emap.Size; j++)
+                {
+                    // Crear y configurar botón del mapa del enemigo
+                    var button = new Button();
+                    button.Left = left;
+                    button.Top = top;
+                    button.Width = width;
+                    button.Height = height;
+                    button.Margin = new Padding(0, 0, 0, 0);
+                    button.FlatStyle = FlatStyle.Flat;
+                    button.Location = new Point(left, top);
+                    button.Name = i + ";" + j;
+                    button.Text = i + @";" + j;
+                    button.Click += btnCoord_Click!;
+                    button.BackColor = Color.FromArgb(150, 50, 100, 250);
+                    plC.Controls.Add(button); // Agregar botón al panel
+                    top += button.Height;
+                }
+
+                left += width;
+                top -= height * emap.Size;
+            }
+
+            // Habilitar la capacidad de atacar en el panel del enemigo
+            plC.Enabled = true;
+
+            // Crear un generador de números aleatorios
+            var r = new Random();
+
+            // Variables para determinar la orientación de los barcos
+            bool horisontal;
+            int eX;
+            int eY;
+            int attempt;
+
+            // Colocar barcos en el mapa del enemigo
+            for (var i = 0; i < int.Parse(numericUpDown2.Value.ToString()); i++)
+            {
+                // Determinar aleatoriamente la orientación del barco (horizontal o vertical)
+                horisontal = r.Next(0, 1) == 0; // 0 o 1 para determinar horizontal o vertical
+
+                // Obtener coordenadas aleatorias para la posición del barco
+                eX = r.Next(0, emap!.Size);
+                eY = r.Next(0, emap.Size);
+                // Inicializar contador de intentos y verificar si la posición está ocupada
+                attempt = 0;
+                var occupied = IMap.isOccupied(eX, eY, 2, horisontal, emap);
+                // Repetir hasta encontrar una posición no ocupada o superar un límite de intentos
+                while (occupied)
+                {
+                    eX = r.Next(0, emap.Size);
+                    eY = r.Next(0, emap.Size);
+                    occupied = IMap.isOccupied(eX, eY, 2, horisontal, emap);
+                    attempt++;
+                    if (!occupied) break;
+                    if (attempt > 50) break;
+                }
+
+                // Colocar el barco en la posición encontrada
+                emap = IMap.placeShip(eX, eY, 2, horisontal, emap);
+            }
+
+            // Repetir el proceso para los otros tamaños de barco
+            for (var i = 0; i < int.Parse(numericUpDown3.Value.ToString()); i++)
+            {
+                horisontal = r.Next(0, 1) == 0;
+                eX = r.Next(0, emap!.Size);
+                eY = r.Next(0, emap.Size);
+                attempt = 0;
+                var occupied = IMap.isOccupied(eX, eY, 3, horisontal, emap);
+                while (occupied)
+                {
+                    eX = r.Next(0, emap.Size);
+                    eY = r.Next(0, emap.Size);
+                    occupied = IMap.isOccupied(eX, eY, 3, horisontal, emap);
+                    attempt++;
+                    if (!occupied) break;
+                    if (attempt > 50) break;
+                }
+
+                emap = IMap.placeShip(eX, eY, 3, horisontal, emap);
+            }
+
+            for (var i = 0; i < int.Parse(numericUpDown4.Value.ToString()); i++)
+            {
+                horisontal = r.Next(0, 1) == 0;
+                eX = r.Next(0, emap!.Size);
+                eY = r.Next(0, emap.Size);
+                attempt = 0;
+                var occupied = IMap.isOccupied(eX, eY, 4, horisontal, emap);
+                while (occupied)
+                {
+                    eX = r.Next(0, emap.Size);
+                    eY = r.Next(0, emap.Size);
+                    occupied = IMap.isOccupied(eX, eY, 4, horisontal, emap);
+                    attempt++;
+                    if (!occupied) break;
+                    if (attempt > 50) break;
+                }
+
+                emap = IMap.placeShip(eX, eY, 4, horisontal, emap);
+            }
+
+            for (var i = 0; i < int.Parse(numericUpDown5.Value.ToString()); i++)
+            {
+                horisontal = r.Next(0, 1) == 0;
+                eX = r.Next(0, emap!.Size);
+                eY = r.Next(0, emap.Size);
+                attempt = 0;
+                var occupied = IMap.isOccupied(eX, eY, 5, horisontal, emap);
+                while (occupied)
+                {
+                    eX = r.Next(0, emap.Size);
+                    eY = r.Next(0, emap.Size);
+                    occupied = IMap.isOccupied(eX, eY, 5, horisontal, emap);
+                    attempt++;
+                    if (!occupied) break;
+                    if (attempt > 50) break;
+                }
+                emap = IMap.placeShip(eX, eY, 5, horisontal, emap);
+            }
+
+            // Actualizar la representación visual en el panel del enemigo
+            foreach (Button btn in plC.Controls) btn.BackColor = Color.FromArgb(150, 50, 100, 250);
+        }
+        else
+        {
+            // Configuración de la interfaz para el final del juego
+            plC.Visible = false;
+            button1.Text = @"Start";
+            _gaming = false;
+
+            // Limpiar los controles de los paneles
+            while (plC.Controls.Count > 0)
+                foreach (Button button in plC.Controls)
+                    plC.Controls.Remove(button);
+        }
+    }
+
+    private void button7_Click(object sender, EventArgs e)
+    {
+        // IMatch.save(Match);
+
+        // Habilitar la capacidad de atacar en el panel del enemigo
+        plC.Enabled = true;
+
+        // Crear un generador de números aleatorios
+        var r = new Random();
+
+        // Variables para determinar la orientación de los barcos
+        bool horisontal;
+        int eX;
+        int eY;
+        int attempt;
+
+        // Colocar barcos en el mapa del enemigo
+        for (var i = 0; i < int.Parse(numericUpDown2.Value.ToString()); i++)
+        {
+            // Determinar aleatoriamente la orientación del barco (horizontal o vertical)
+            horisontal = r.Next(0, 1) == 0; // 0 o 1 para determinar horizontal o vertical
+
+            // Obtener coordenadas aleatorias para la posición del barco
+            eX = r.Next(0, emap!.Size);
+            eY = r.Next(0, emap.Size);
+            // Inicializar contador de intentos y verificar si la posición está ocupada
+            attempt = 0;
+            var occupied = IMap.isOccupied(eX, eY, 2, horisontal, emap);
+            // Repetir hasta encontrar una posición no ocupada o superar un límite de intentos
+            while (occupied)
+            {
+                eX = r.Next(0, emap.Size);
+                eY = r.Next(0, emap.Size);
+                occupied = IMap.isOccupied(eX, eY, 2, horisontal, emap);
+                attempt++;
+                if (!occupied) break;
+                if (attempt > 50) break;
+            }
+
+            // Colocar el barco en la posición encontrada
+            emap = IMap.placeShip(eX, eY, 2, horisontal, emap);
+        }
+
+        // Repetir el proceso para los otros tamaños de barco
+        for (var i = 0; i < int.Parse(numericUpDown3.Value.ToString()); i++)
+        {
+            horisontal = r.Next(0, 1) == 0;
+            eX = r.Next(0, emap!.Size);
+            eY = r.Next(0, emap.Size);
+            attempt = 0;
+            var occupied = IMap.isOccupied(eX, eY, 3, horisontal, emap);
+            while (occupied)
+            {
+                eX = r.Next(0, emap.Size);
+                eY = r.Next(0, emap.Size);
+                occupied = IMap.isOccupied(eX, eY, 3, horisontal, emap);
+                attempt++;
+                if (!occupied) break;
+                if (attempt > 50) break;
+            }
+
+            emap = IMap.placeShip(eX, eY, 3, horisontal, emap);
+        }
+
+        for (var i = 0; i < int.Parse(numericUpDown4.Value.ToString()); i++)
+        {
+            horisontal = r.Next(0, 1) == 0;
+            eX = r.Next(0, emap!.Size);
+            eY = r.Next(0, emap.Size);
+            attempt = 0;
+            var occupied = IMap.isOccupied(eX, eY, 4, horisontal, emap);
+            while (occupied)
+            {
+                eX = r.Next(0, emap.Size);
+                eY = r.Next(0, emap.Size);
+                occupied = IMap.isOccupied(eX, eY, 4, horisontal, emap);
+                attempt++;
+                if (!occupied) break;
+                if (attempt > 50) break;
+            }
+
+            emap = IMap.placeShip(eX, eY, 4, horisontal, emap);
+        }
+
+        for (var i = 0; i < int.Parse(numericUpDown5.Value.ToString()); i++)
+        {
+            horisontal = r.Next(0, 1) == 0;
+            eX = r.Next(0, emap!.Size);
+            eY = r.Next(0, emap.Size);
+            attempt = 0;
+            var occupied = IMap.isOccupied(eX, eY, 5, horisontal, emap);
+            while (occupied)
+            {
+                eX = r.Next(0, emap.Size);
+                eY = r.Next(0, emap.Size);
+                occupied = IMap.isOccupied(eX, eY, 5, horisontal, emap);
+                attempt++;
+                if (!occupied) break;
+                if (attempt > 50) break;
+            }
+            emap = IMap.placeShip(eX, eY, 5, horisontal, emap);
+        }
+
+        // Actualizar la representación visual en el panel del enemigo
+        foreach (Button btn in plC.Controls) btn.BackColor = Color.FromArgb(150, 50, 100, 250);
+    }
+
+    private void btSoloClose_Click(object sender, EventArgs e)
+    {
         Hide();
         Program.MainMenu!.Show();
     }
 
-    private void initializeChronometer()
+    private void label6_Click(object sender, EventArgs e)
     {
-        _timer = new System.Windows.Forms.Timer();
-        _timer.Interval = 1000; //para que cuente bien los segundos
-        _timer.Tick += Timer_Tick!;
-    }
 
-    private void Timer_Tick(object sender, EventArgs e)
-    {
-        //Actualizar la visualización del tiempo si es necesario
-        _tiempoTranscurrido = _tiempoTranscurrido.Add(TimeSpan.FromSeconds(1));
-    }
-
-    private void button2_Click(object sender, EventArgs e)
-    {
-        //lista con todos los botones que forman la matriz de lugares donde hay barcos
-        _shipPossitionButtons = new List<Button>
-        {
-            a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, c1, c2, c3, c4, c5, c6,
-            c7, c8, c9, c10, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10
-        };
-
-        //asigna a 5 botones el tag 'enemyShip' para que haya un barco en ese boton
-        for (var i = 0; i < 5; i++)
-        {
-            var indiceAleatorio = _r.Next(_shipPossitionButtons.Count);
-            _shipPossitionButtons[indiceAleatorio].Tag = "enemyShip";
-        }
-
-        //los botones estan ocultos antes de clickear start, este foreach los vuelve visibles
-        foreach (var button in _shipPossitionButtons) button.Visible = true;
-
-        //inicia el cronómetro 
-        _tiempoTranscurrido = new TimeSpan();
-        _timer.Start();
-    }
-
-    private void BotonPosicion_Click(object sender, EventArgs e)
-    {
-        //verifica si el botón clicado tiene el tag enemyShip
-        var botonClicado = sender as Button;
-        if (botonClicado != null && "enemyShip".Equals(botonClicado.Tag))
-        {
-            //realiza las acciones necesarias cuando se clickea un botón con el tag enemyShip
-            MessageBox.Show(@"¡Encontraste un barco");
-
-            //quita la propiedad para que no se pueda contar más de una vez
-            botonClicado.Tag = null;
-        }
-
-        //devulve true cuando no haya ningun barco con el tag enemyShip y muestra q termino la partida
-        if (_shipPossitionButtons.Any(button => "enemyShip".Equals((string?)button.Tag))) return;
-        {
-            _timer.Stop();
-            MessageBox.Show($@"¡Ganaste la partida! Tiempo: {_tiempoTranscurrido.ToString(@"mm\:ss")}");
-            foreach (var button in _shipPossitionButtons) button.Visible = false;
-            Hide();
-            Program.MainMenu!.Show();
-            restartChronometer();
-        }
-    }
-
-    private void restartChronometer()
-    {
-        _tiempoTranscurrido = new TimeSpan();
-        _timer.Start();
     }
 }

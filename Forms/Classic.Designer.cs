@@ -383,6 +383,8 @@ partial class Classic
         Controls.Add(ePanel);
         Controls.Add(btSoloClose);
         Margin = new Padding(3, 2, 3, 2);
+        MaximumSize = new Size(1191, 579);
+        MinimumSize = new Size(1191, 579);
         Name = "Classic";
         Text = "Classic";
         FormClosing += gSolo_FormClosing;
