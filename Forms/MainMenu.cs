@@ -44,7 +44,6 @@ public partial class MainMenu : Form
     {
         Program.Classic!.Show();
         Hide();
-        // time_Rush();
     }
 
     private void time_Rush()
@@ -200,9 +199,7 @@ public partial class MainMenu : Form
             u.User = tbUserR.Text;
             u.Password = tbPasswordR.Text;
             pPlayer.Insert(u);
-            plLogin.Visible = false;
-            btCoop.Enabled = true;
-            btSolo.Enabled = true;
+            // Close();
         }
     }
 }
