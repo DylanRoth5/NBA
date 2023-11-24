@@ -197,9 +197,11 @@ public partial class MainMenu : Form
             //guardo
             Player u = new Player();
             u.User = tbUserR.Text;
-            u.Password = tbPasswordR.Text;
+            u.Password = nMD5.CreateMD5(tbPassword.Text);
             pPlayer.Insert(u);
-            // Close();
+            plLogin.Visible = false;
+            btCoop.Enabled = true;
+            btSolo.Enabled = true;
         }
     }
 }
