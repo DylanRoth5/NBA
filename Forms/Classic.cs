@@ -207,6 +207,7 @@ public partial class Classic : Form
 
             foreach (Button butn in pPanel.Controls)
             {
+                butn.Enabled = true;
                 var temp2 = butn.Name.Split(';');
                 int[] coords2 = { int.Parse(temp2[0]), int.Parse(temp2[1]) };
                 if (pmap!.Matrix[coords2[0], coords2[1]] == Map.Ship)
@@ -311,6 +312,8 @@ public partial class Classic : Form
         // Verificar si el juego aún no ha comenzado
         if (!_gaming)
         {
+            _isHorizontal = button6.Text == @"Horizontal";
+
             // Configuración de la interfaz para el inicio del juego
             button1.Text = @"End Game";
             ePanel.Enabled = false;
@@ -435,6 +438,34 @@ public partial class Classic : Form
             shipPanel.Enabled = false;
         }
 
+        if (_isHorizontal)
+        {
+            foreach (Button item in pPanel.Controls)
+            {
+                var name = $"{int.Parse(item.Name[0].ToString())-1};{item.Name[2]}";
+                if (item.BackColor == Color.Black)
+                    foreach (Button item2 in pPanel.Controls)
+                    {
+                        if (name == item2.Name) item2.Enabled = false;
+                        if (int.Parse(item2.Name[0].ToString()) >= pmap.Size-1) item2.Enabled = false;
+                    }
+
+            }
+        }
+        else
+        {
+            foreach (Button item in pPanel.Controls)
+            {
+                var name = $"{item.Name[0]};{int.Parse(item.Name[2].ToString())-1}";
+                if (item.BackColor == Color.Black)
+                    foreach (Button item2 in pPanel.Controls)
+                    {
+                        if (name == item2.Name) item2.Enabled = false;
+                        if (int.Parse(item2.Name[2].ToString()) >= pmap.Size-1) item2.Enabled = false;
+                    }
+            }
+        }
+
         button2.Enabled = false;
     }
 
@@ -445,6 +476,38 @@ public partial class Classic : Form
             _placingNormal = true;
             shipPanel.Enabled = false;
         }
+        
+        if (_isHorizontal)
+        {
+            foreach (Button item in pPanel.Controls)
+            {
+                var name = $"{int.Parse(item.Name[0].ToString())-1};{item.Name[2]}";
+                var name2 = $"{int.Parse(item.Name[0].ToString()) - 2};{item.Name[2]}";
+                if (item.BackColor == Color.Black)
+                    foreach (Button item2 in pPanel.Controls)
+                    {
+                        if (name == item2.Name) item2.Enabled = false;
+                        if (name2 == item2.Name) item2.Enabled = false;
+                        if (int.Parse(item2.Name[0].ToString()) >= pmap.Size-2) item2.Enabled = false;
+                    }
+            }
+        }
+        else
+        {
+            foreach (Button item in pPanel.Controls)
+            {
+                var name = $"{item.Name[0]};{int.Parse(item.Name[2].ToString())-1}";
+                var name2 = $"{item.Name[0]};{int.Parse(item.Name[2].ToString())-2}";
+                if (item.BackColor == Color.Black)
+                    foreach (Button item2 in pPanel.Controls)
+                    {
+                        if (name == item2.Name) item2.Enabled = false;
+                        if (name2 == item2.Name) item2.Enabled = false;
+                        if (int.Parse(item2.Name[2].ToString()) >= pmap.Size-2) item2.Enabled = false;
+                    }
+            }
+        }
+
 
         button3.Enabled = false;
     }
@@ -456,6 +519,40 @@ public partial class Classic : Form
             _placingBig = true;
             shipPanel.Enabled = false;
         }
+        if (_isHorizontal)
+        {
+            foreach (Button item in pPanel.Controls)
+            {
+                var name = $"{int.Parse(item.Name[0].ToString())-1};{item.Name[2]}";
+                var name2 = $"{int.Parse(item.Name[0].ToString()) - 2};{item.Name[2]}";
+                var name3 = $"{int.Parse(item.Name[0].ToString()) - 3};{item.Name[2]}";
+                if (item.BackColor == Color.Black)
+                    foreach (Button item2 in pPanel.Controls)
+                    {
+                        if (name == item2.Name) item2.Enabled = false;
+                        if (name2 == item2.Name) item2.Enabled = false;
+                        if (name3 == item2.Name) item2.Enabled = false;
+                        if (int.Parse(item2.Name[0].ToString()) >= pmap.Size-3) item2.Enabled = false;
+                    }
+            }
+        }
+        else
+        {
+            foreach (Button item in pPanel.Controls)
+            {
+                var name = $"{item.Name[0]};{int.Parse(item.Name[2].ToString())-1}";
+                var name2 = $"{item.Name[0]};{int.Parse(item.Name[2].ToString())-2}";
+                var name3 = $"{item.Name[0]};{int.Parse(item.Name[2].ToString())-3}";
+                if (item.BackColor == Color.Black)
+                    foreach (Button item2 in pPanel.Controls)
+                    {
+                        if (name == item2.Name) item2.Enabled = false;
+                        if (name2 == item2.Name) item2.Enabled = false;
+                        if (name3 == item2.Name) item2.Enabled = false;
+                        if (int.Parse(item2.Name[2].ToString()) >= pmap.Size-3) item2.Enabled = false;
+                    }
+            }
+        }
 
         button4.Enabled = false;
     }
@@ -466,6 +563,44 @@ public partial class Classic : Form
         {
             _placingBigger = true;
             shipPanel.Enabled = false;
+        }
+        if (_isHorizontal)
+        {
+            foreach (Button item in pPanel.Controls)
+            {
+                var name = $"{int.Parse(item.Name[0].ToString())-1};{item.Name[2]}";
+                var name2 = $"{int.Parse(item.Name[0].ToString()) - 2};{item.Name[2]}";
+                var name3 = $"{int.Parse(item.Name[0].ToString()) - 3};{item.Name[2]}";
+                var name4 = $"{int.Parse(item.Name[0].ToString()) - 4};{item.Name[2]}";
+                if (item.BackColor == Color.Black)
+                    foreach (Button item2 in pPanel.Controls)
+                    {
+                        if (name == item2.Name) item2.Enabled = false;
+                        if (name2 == item2.Name) item2.Enabled = false;
+                        if (name3 == item2.Name) item2.Enabled = false;
+                        if (name4 == item2.Name) item2.Enabled = false;
+                        if (int.Parse(item2.Name[0].ToString()) >= pmap.Size-4) item2.Enabled = false;
+                    }
+            }
+        }
+        else
+        {
+            foreach (Button item in pPanel.Controls)
+            {
+                var name = $"{item.Name[0]};{int.Parse(item.Name[2].ToString())-1}";
+                var name2 = $"{item.Name[0]};{int.Parse(item.Name[2].ToString())-2}";
+                var name3 = $"{item.Name[0]};{int.Parse(item.Name[2].ToString())-3}";
+                var name4 = $"{item.Name[0]};{int.Parse(item.Name[2].ToString())-4}";
+                if (item.BackColor == Color.Black)
+                    foreach (Button item2 in pPanel.Controls)
+                    {
+                        if (name == item2.Name) item2.Enabled = false;
+                        if (name2 == item2.Name) item2.Enabled = false;
+                        if (name3 == item2.Name) item2.Enabled = false;
+                        if (name4 == item2.Name) item2.Enabled = false;
+                        if (int.Parse(item2.Name[2].ToString()) >= pmap.Size-4) item2.Enabled = false;
+                    }
+            }
         }
 
         button5.Enabled = false;
@@ -540,7 +675,6 @@ public partial class Classic : Form
                 if (!occupied) break;
                 if (attempt > 50) break;
             }
-
             emap = IMap.placeShip(eX, eY, 3, horisontal, emap);
         }
 
