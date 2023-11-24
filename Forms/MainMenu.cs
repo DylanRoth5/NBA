@@ -42,10 +42,10 @@ public partial class MainMenu : Form
 
     private void btSolo_Click(object sender, EventArgs e)
     {
-        //Program.Classic!.Show();
-        time_Rush();
+        Program.Classic!.Show();
+        // time_Rush();
 
-        //Hide();
+        Hide();
     }
 
     private void time_Rush()
@@ -103,9 +103,9 @@ public partial class MainMenu : Form
 
     private void btCoop_Click(object sender, EventArgs e)
     {
-        classic();
-        //Program.TimeRush!.Show();
-        //Hide();
+        // classic();
+        Program.TimeRush!.Show();
+        Hide();
     }
 
     private void btPause_Click(object sender, EventArgs e)
@@ -139,27 +139,31 @@ public partial class MainMenu : Form
 
     private void btLogin_Click(object sender, EventArgs e)
     {
-        // plLogin.Visible = false;
-        Player usuario = pPlayer.GetByUsername(tbUser.Text);
-        if (usuario.User == null)
-        {
-            MessageBox.Show("El usuario no existe!!!");
-            tbUser.Focus();
-        }
-        else
-        {
-            if (usuario.Password == Controllers.nMD5.CreateMD5(tbPassword.Text))
-            {
-                loginOk = true;
-                Close();
-            }
-            else
-            {
-                loginOk = false;
-                MessageBox.Show("Clave incorrecta");
-                tbPassword.Focus();
-            }
-        }
+        plLogin.Visible = false;
+        btCoop.Enabled = true;
+        btSolo.Enabled = true;
+        // Player usuario = pPlayer.GetAll().Find(user => user.User == tbUser.Text);
+        // if (usuario.User == null)
+        // {
+        //     MessageBox.Show("El usuario no existe!!!");
+        //     tbUser.Focus();
+        // }
+        // else
+        // {
+        //     
+        //     // if (usuario.Password == Controllers.nMD5.CreateMD5(tbPassword.Text))
+        //     if (usuario.Password == tbPassword.Text)
+        //     {
+        //         loginOk = true;
+        //         Close();
+        //     }
+        //     else
+        //     {
+        //         loginOk = false;
+        //         MessageBox.Show("Clave incorrecta");
+        //         tbPassword.Focus();
+        //     }
+        // }
     }
 
     private void llRegister_Click(object sender, EventArgs e)

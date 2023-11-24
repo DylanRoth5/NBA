@@ -51,29 +51,35 @@ partial class Classic
         button3 = new Button();
         button2 = new Button();
         label7 = new Label();
+        ConfigPanel = new Panel();
         ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericUpDown4).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericUpDown5).BeginInit();
         shipPanel.SuspendLayout();
+        ConfigPanel.SuspendLayout();
         SuspendLayout();
         // 
         // btSoloClose
         // 
+        btSoloClose.BackColor = Color.FromArgb(200, 0, 0, 0);
+        btSoloClose.FlatStyle = FlatStyle.Flat;
+        btSoloClose.ForeColor = Color.CornflowerBlue;
         btSoloClose.Location = new Point(12, 11);
         btSoloClose.Margin = new Padding(3, 2, 3, 2);
         btSoloClose.Name = "btSoloClose";
         btSoloClose.Size = new Size(82, 22);
         btSoloClose.TabIndex = 0;
         btSoloClose.Text = "CERRAR";
-        btSoloClose.UseVisualStyleBackColor = true;
+        btSoloClose.UseVisualStyleBackColor = false;
         btSoloClose.Click += btSoloClose_Click;
         // 
         // label1
         // 
         label1.AutoSize = true;
-        label1.Location = new Point(13, 47);
+        label1.ForeColor = Color.CornflowerBlue;
+        label1.Location = new Point(3, 16);
         label1.Name = "label1";
         label1.Size = new Size(54, 15);
         label1.TabIndex = 1;
@@ -82,7 +88,8 @@ partial class Classic
         // label2
         // 
         label2.AutoSize = true;
-        label2.Location = new Point(12, 76);
+        label2.ForeColor = Color.CornflowerBlue;
+        label2.Location = new Point(3, 45);
         label2.Name = "label2";
         label2.Size = new Size(62, 15);
         label2.TabIndex = 2;
@@ -92,7 +99,8 @@ partial class Classic
         // label3
         // 
         label3.AutoSize = true;
-        label3.Location = new Point(12, 104);
+        label3.ForeColor = Color.CornflowerBlue;
+        label3.Location = new Point(3, 76);
         label3.Name = "label3";
         label3.Size = new Size(73, 15);
         label3.TabIndex = 3;
@@ -101,7 +109,8 @@ partial class Classic
         // label4
         // 
         label4.AutoSize = true;
-        label4.Location = new Point(12, 133);
+        label4.ForeColor = Color.CornflowerBlue;
+        label4.Location = new Point(3, 105);
         label4.Name = "label4";
         label4.Size = new Size(50, 15);
         label4.TabIndex = 4;
@@ -110,7 +119,8 @@ partial class Classic
         // label5
         // 
         label5.AutoSize = true;
-        label5.Location = new Point(13, 162);
+        label5.ForeColor = Color.CornflowerBlue;
+        label5.Location = new Point(3, 134);
         label5.Name = "label5";
         label5.Size = new Size(67, 15);
         label5.TabIndex = 5;
@@ -118,59 +128,76 @@ partial class Classic
         // 
         // numericUpDown1
         // 
-        numericUpDown1.Location = new Point(96, 45);
+        numericUpDown1.BackColor = Color.Black;
+        numericUpDown1.BorderStyle = BorderStyle.None;
+        numericUpDown1.ForeColor = Color.CornflowerBlue;
+        numericUpDown1.Location = new Point(74, 14);
         numericUpDown1.Maximum = new decimal(new int[] { 12, 0, 0, 0 });
         numericUpDown1.Minimum = new decimal(new int[] { 6, 0, 0, 0 });
         numericUpDown1.Name = "numericUpDown1";
-        numericUpDown1.Size = new Size(40, 23);
+        numericUpDown1.Size = new Size(40, 19);
         numericUpDown1.TabIndex = 6;
         numericUpDown1.Value = new decimal(new int[] { 10, 0, 0, 0 });
         // 
         // numericUpDown2
         // 
-        numericUpDown2.Location = new Point(96, 74);
+        numericUpDown2.BackColor = Color.Black;
+        numericUpDown2.BorderStyle = BorderStyle.None;
+        numericUpDown2.ForeColor = Color.CornflowerBlue;
+        numericUpDown2.Location = new Point(74, 43);
         numericUpDown2.Maximum = new decimal(new int[] { 4, 0, 0, 0 });
         numericUpDown2.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
         numericUpDown2.Name = "numericUpDown2";
-        numericUpDown2.Size = new Size(40, 23);
+        numericUpDown2.Size = new Size(40, 19);
         numericUpDown2.TabIndex = 7;
         numericUpDown2.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
         // numericUpDown3
         // 
-        numericUpDown3.Location = new Point(96, 102);
+        numericUpDown3.BackColor = Color.Black;
+        numericUpDown3.BorderStyle = BorderStyle.None;
+        numericUpDown3.ForeColor = Color.CornflowerBlue;
+        numericUpDown3.Location = new Point(74, 74);
         numericUpDown3.Maximum = new decimal(new int[] { 4, 0, 0, 0 });
         numericUpDown3.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
         numericUpDown3.Name = "numericUpDown3";
-        numericUpDown3.Size = new Size(40, 23);
+        numericUpDown3.Size = new Size(40, 19);
         numericUpDown3.TabIndex = 8;
         numericUpDown3.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
         // numericUpDown4
         // 
-        numericUpDown4.Location = new Point(96, 131);
+        numericUpDown4.BackColor = Color.Black;
+        numericUpDown4.BorderStyle = BorderStyle.None;
+        numericUpDown4.ForeColor = Color.CornflowerBlue;
+        numericUpDown4.Location = new Point(74, 103);
         numericUpDown4.Maximum = new decimal(new int[] { 4, 0, 0, 0 });
         numericUpDown4.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
         numericUpDown4.Name = "numericUpDown4";
-        numericUpDown4.Size = new Size(40, 23);
+        numericUpDown4.Size = new Size(40, 19);
         numericUpDown4.TabIndex = 9;
         numericUpDown4.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
         // numericUpDown5
         // 
-        numericUpDown5.Location = new Point(96, 160);
+        numericUpDown5.BackColor = Color.Black;
+        numericUpDown5.BorderStyle = BorderStyle.None;
+        numericUpDown5.ForeColor = Color.CornflowerBlue;
+        numericUpDown5.Location = new Point(74, 132);
         numericUpDown5.Maximum = new decimal(new int[] { 4, 0, 0, 0 });
         numericUpDown5.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
         numericUpDown5.Name = "numericUpDown5";
-        numericUpDown5.Size = new Size(40, 23);
+        numericUpDown5.Size = new Size(40, 19);
         numericUpDown5.TabIndex = 10;
         numericUpDown5.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
         // button1
         // 
-        button1.Location = new Point(12, 189);
+        button1.FlatStyle = FlatStyle.Flat;
+        button1.ForeColor = Color.CornflowerBlue;
+        button1.Location = new Point(9, 161);
         button1.Name = "button1";
-        button1.Size = new Size(124, 30);
+        button1.Size = new Size(105, 30);
         button1.TabIndex = 11;
         button1.Text = "Start";
         button1.UseVisualStyleBackColor = true;
@@ -178,7 +205,7 @@ partial class Classic
         // 
         // ePanel
         // 
-        ePanel.BackColor = Color.LightSteelBlue;
+        ePanel.BackColor = Color.FromArgb(100, 0, 0, 0);
         ePanel.Location = new Point(142, 11);
         ePanel.Name = "ePanel";
         ePanel.Size = new Size(515, 518);
@@ -188,7 +215,7 @@ partial class Classic
         // 
         // pPanel
         // 
-        pPanel.BackColor = Color.LightSteelBlue;
+        pPanel.BackColor = Color.FromArgb(100, 0, 0, 0);
         pPanel.Location = new Point(663, 11);
         pPanel.Name = "pPanel";
         pPanel.Size = new Size(509, 518);
@@ -197,7 +224,7 @@ partial class Classic
         // 
         // shipPanel
         // 
-        shipPanel.BackColor = SystemColors.ActiveCaption;
+        shipPanel.BackColor = Color.FromArgb(200, 0, 0, 0);
         shipPanel.Controls.Add(button7);
         shipPanel.Controls.Add(label6);
         shipPanel.Controls.Add(button6);
@@ -205,18 +232,20 @@ partial class Classic
         shipPanel.Controls.Add(button4);
         shipPanel.Controls.Add(button3);
         shipPanel.Controls.Add(button2);
-        shipPanel.Location = new Point(13, 229);
+        shipPanel.Location = new Point(12, 246);
         shipPanel.Name = "shipPanel";
-        shipPanel.Size = new Size(117, 216);
+        shipPanel.Size = new Size(124, 257);
         shipPanel.TabIndex = 15;
         shipPanel.Visible = false;
         // 
         // button7
         // 
         button7.Enabled = false;
-        button7.Location = new Point(14, 181);
+        button7.FlatStyle = FlatStyle.Flat;
+        button7.ForeColor = Color.CornflowerBlue;
+        button7.Location = new Point(9, 216);
         button7.Name = "button7";
-        button7.Size = new Size(85, 24);
+        button7.Size = new Size(105, 29);
         button7.TabIndex = 6;
         button7.Text = "Ready";
         button7.UseVisualStyleBackColor = true;
@@ -226,6 +255,7 @@ partial class Classic
         // 
         label6.AutoSize = true;
         label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label6.ForeColor = Color.CornflowerBlue;
         label6.Location = new Point(14, 7);
         label6.Name = "label6";
         label6.Size = new Size(74, 21);
@@ -234,9 +264,11 @@ partial class Classic
         // 
         // button6
         // 
-        button6.Location = new Point(14, 31);
+        button6.FlatStyle = FlatStyle.Flat;
+        button6.ForeColor = Color.CornflowerBlue;
+        button6.Location = new Point(9, 31);
         button6.Name = "button6";
-        button6.Size = new Size(85, 24);
+        button6.Size = new Size(105, 31);
         button6.TabIndex = 4;
         button6.Text = "Horizontal";
         button6.UseVisualStyleBackColor = true;
@@ -244,9 +276,11 @@ partial class Classic
         // 
         // button5
         // 
-        button5.Location = new Point(14, 151);
+        button5.FlatStyle = FlatStyle.Flat;
+        button5.ForeColor = Color.CornflowerBlue;
+        button5.Location = new Point(9, 179);
         button5.Name = "button5";
-        button5.Size = new Size(85, 24);
+        button5.Size = new Size(105, 31);
         button5.TabIndex = 3;
         button5.Text = "BiggerShip";
         button5.UseVisualStyleBackColor = true;
@@ -254,9 +288,11 @@ partial class Classic
         // 
         // button4
         // 
-        button4.Location = new Point(14, 121);
+        button4.FlatStyle = FlatStyle.Flat;
+        button4.ForeColor = Color.CornflowerBlue;
+        button4.Location = new Point(9, 142);
         button4.Name = "button4";
-        button4.Size = new Size(85, 24);
+        button4.Size = new Size(105, 31);
         button4.TabIndex = 2;
         button4.Text = "BigShip";
         button4.UseVisualStyleBackColor = true;
@@ -264,9 +300,11 @@ partial class Classic
         // 
         // button3
         // 
-        button3.Location = new Point(14, 91);
+        button3.FlatStyle = FlatStyle.Flat;
+        button3.ForeColor = Color.CornflowerBlue;
+        button3.Location = new Point(9, 105);
         button3.Name = "button3";
-        button3.Size = new Size(85, 24);
+        button3.Size = new Size(105, 31);
         button3.TabIndex = 1;
         button3.Text = "NormalShip";
         button3.UseVisualStyleBackColor = true;
@@ -274,9 +312,11 @@ partial class Classic
         // 
         // button2
         // 
-        button2.Location = new Point(14, 61);
+        button2.FlatStyle = FlatStyle.Flat;
+        button2.ForeColor = Color.CornflowerBlue;
+        button2.Location = new Point(9, 68);
         button2.Name = "button2";
-        button2.Size = new Size(85, 24);
+        button2.Size = new Size(105, 31);
         button2.TabIndex = 0;
         button2.Text = "SmallShip";
         button2.UseVisualStyleBackColor = true;
@@ -285,34 +325,46 @@ partial class Classic
         // label7
         // 
         label7.AutoSize = true;
-        label7.Font = new Font("OCR A Extended", 60F, FontStyle.Regular, GraphicsUnit.Point);
-        label7.Location = new Point(500, 208);
+        label7.BackColor = Color.FromArgb(150, 0, 0, 0);
+        label7.Font = new Font("OCR A Extended", 100F, FontStyle.Regular, GraphicsUnit.Point);
+        label7.ForeColor = Color.CornflowerBlue;
+        label7.Location = new Point(350, 200);
         label7.Name = "label7";
-        label7.Size = new Size(323, 83);
+        label7.Size = new Size(545, 139);
         label7.TabIndex = 16;
         label7.Text = "label7";
         label7.Visible = false;
+        // 
+        // ConfigPanel
+        // 
+        ConfigPanel.BackColor = Color.FromArgb(200, 0, 0, 0);
+        ConfigPanel.Controls.Add(button1);
+        ConfigPanel.Controls.Add(label5);
+        ConfigPanel.Controls.Add(numericUpDown5);
+        ConfigPanel.Controls.Add(label4);
+        ConfigPanel.Controls.Add(numericUpDown4);
+        ConfigPanel.Controls.Add(label1);
+        ConfigPanel.Controls.Add(numericUpDown1);
+        ConfigPanel.Controls.Add(numericUpDown2);
+        ConfigPanel.Controls.Add(label2);
+        ConfigPanel.Controls.Add(numericUpDown3);
+        ConfigPanel.Controls.Add(label3);
+        ConfigPanel.Location = new Point(12, 38);
+        ConfigPanel.Name = "ConfigPanel";
+        ConfigPanel.Size = new Size(124, 202);
+        ConfigPanel.TabIndex = 17;
         // 
         // Classic
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
+        BackgroundImage = Properties.Resources.Fondo2;
         ClientSize = new Size(1175, 540);
+        Controls.Add(ConfigPanel);
         Controls.Add(label7);
         Controls.Add(shipPanel);
         Controls.Add(pPanel);
         Controls.Add(ePanel);
-        Controls.Add(button1);
-        Controls.Add(numericUpDown5);
-        Controls.Add(numericUpDown4);
-        Controls.Add(numericUpDown3);
-        Controls.Add(numericUpDown2);
-        Controls.Add(numericUpDown1);
-        Controls.Add(label5);
-        Controls.Add(label4);
-        Controls.Add(label3);
-        Controls.Add(label2);
-        Controls.Add(label1);
         Controls.Add(btSoloClose);
         Margin = new Padding(3, 2, 3, 2);
         Name = "Classic";
@@ -327,6 +379,8 @@ partial class Classic
         ((System.ComponentModel.ISupportInitialize)numericUpDown5).EndInit();
         shipPanel.ResumeLayout(false);
         shipPanel.PerformLayout();
+        ConfigPanel.ResumeLayout(false);
+        ConfigPanel.PerformLayout();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -356,4 +410,5 @@ partial class Classic
     private Label label6;
     private Button button7;
     private Label label7;
+    private Panel ConfigPanel;
 }

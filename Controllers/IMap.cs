@@ -53,7 +53,7 @@ public class IMap
     {
         for (var i = 0; i < map!.Size; i++)
             for (var j = 0; j < map.Size; j++)
-                map.Matrix[i, j] = Map.Water;
+                map.Matrix[i, j] = map.Water;
         return map;
     }
 

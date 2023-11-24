@@ -32,3 +32,4 @@ C:\Users\dylan\BlackBox\NBA\obj\Debug\net7.0-windows\refint\NBA.dll
 C:\Users\dylan\BlackBox\NBA\obj\Debug\net7.0-windows\NBA.pdb
 C:\Users\dylan\BlackBox\NBA\obj\Debug\net7.0-windows\NBA.genruntimeconfig.cache
 C:\Users\dylan\BlackBox\NBA\obj\Debug\net7.0-windows\ref\NBA.dll
+C:\Users\dylan\BlackBox\NBA\obj\Debug\net7.0-windows\NBA.Properties.Resources.resources
