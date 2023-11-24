@@ -14,7 +14,7 @@ public partial class Classic : Form
     // Mapas para el jugador y el enemigo
     private static Map? emap;
     private static Map? pmap;
-
+    private static Match match;
     // Variable que indica si la orientación de los barcos es horizontal
     private static bool _isHorizontal = true;
 
@@ -53,7 +53,7 @@ public partial class Classic : Form
     private void btnCoord_Click(object sender, EventArgs e)
     {
         // Obtener el botón que activó el evento
-        var btn = (Button)sender;
+        var btn = (Spot)sender;
 
         // Extraer las coordenadas del nombre del botón
         var temp = btn.Name.Split(';');
@@ -74,21 +74,21 @@ public partial class Classic : Form
                 // Cambiar el color del botón según el valor en la matriz del mapa del enemigo
                 if (emap.Matrix[coords2[0], coords2[1]] == Map.Ship)
                 {
-                    butn.BackColor = Color.FromArgb(150,50,100,250);
+                    butn.BackColor = Color.FromArgb(150, 50, 100, 250);
                 }
                 else if (emap.Matrix[coords2[0], coords2[1]] == Map.WreckedShip)
                 {
-                    butn.BackColor = Color.FromArgb(150,150,10,50);
-                    butn.Enabled = false; 
+                    butn.BackColor = Color.FromArgb(150, 150, 10, 50);
+                    butn.Enabled = false;
                 }
                 else if (emap.Matrix[coords2[0], coords2[1]] == Map.FailedMissile)
                 {
-                    butn.BackColor = Color.FromArgb(150,25,50,200);
+                    butn.BackColor = Color.FromArgb(150, 25, 50, 200);
                     butn.Enabled = false;
                 }
                 else
                 {
-                    butn.BackColor = Color.FromArgb(150,50,100,250);
+                    butn.BackColor = Color.FromArgb(150, 50, 100, 250);
                 }
             }
 
@@ -104,6 +104,7 @@ public partial class Classic : Form
                 eX = r.Next(0, emap.Size - 1);
                 eY = r.Next(0, emap.Size - 1);
                 bombed = IMap.isBombed(eX, eY, emap);
+                btn.IsBombed = bombed; // Almacena el estado del lugar
                 attempt++;
 
                 // Salir del bucle si se encuentra una posición válida o después de 50 intentos
@@ -127,17 +128,17 @@ public partial class Classic : Form
                 }
                 else if (pmap.Matrix[coords2[0], coords2[1]] == Map.WreckedShip)
                 {
-                    butn.BackColor = Color.FromArgb(150,150,10,50);
+                    butn.BackColor = Color.FromArgb(150, 150, 10, 50);
                     butn.Enabled = false;
                 }
                 else if (pmap.Matrix[coords2[0], coords2[1]] == Map.FailedMissile)
                 {
-                    butn.BackColor = Color.FromArgb(150,25,50,200);
+                    butn.BackColor = Color.FromArgb(150, 25, 50, 200);
                     butn.Enabled = false;
                 }
                 else
                 {
-                    butn.BackColor = Color.FromArgb(150,50,100,250);
+                    butn.BackColor = Color.FromArgb(150, 50, 100, 250);
                 }
             }
         }
@@ -149,12 +150,12 @@ public partial class Classic : Form
                 switch (_isHorizontal)
                 {
                     case true when coords[0] < pmap!.Size - 1:
-                        pmap = IMap.placeShip(coords[0], coords[1], 2, _isHorizontal, pmap);
+                        pmap = IMap.placeShip(coords[0], coords[1], 2, _isHorizontal, pmap, pPanel);
                         _smolShip--;
                         _placingSmal = false;
                         break;
                     case false when coords[1] < pmap!.Size - 1:
-                        pmap = IMap.placeShip(coords[0], coords[1], 2, _isHorizontal, pmap);
+                        pmap = IMap.placeShip(coords[0], coords[1], 2, _isHorizontal, pmap, pPanel);
                         _smolShip--;
                         _placingSmal = false;
                         break;
@@ -164,12 +165,12 @@ public partial class Classic : Form
                 switch (_isHorizontal)
                 {
                     case true when coords[0] < pmap!.Size - 2:
-                        pmap = IMap.placeShip(coords[0], coords[1], 3, _isHorizontal, pmap);
+                        pmap = IMap.placeShip(coords[0], coords[1], 3, _isHorizontal, pmap, pPanel);
                         _normalShip--;
                         _placingNormal = false;
                         break;
                     case false when coords[1] < pmap!.Size - 2:
-                        pmap = IMap.placeShip(coords[0], coords[1], 3, _isHorizontal, pmap);
+                        pmap = IMap.placeShip(coords[0], coords[1], 3, _isHorizontal, pmap, pPanel);
                         _normalShip--;
                         _placingNormal = false;
                         break;
@@ -179,12 +180,12 @@ public partial class Classic : Form
                 switch (_isHorizontal)
                 {
                     case true when coords[0] < pmap!.Size - 3:
-                        pmap = IMap.placeShip(coords[0], coords[1], 4, _isHorizontal, pmap);
+                        pmap = IMap.placeShip(coords[0], coords[1], 4, _isHorizontal, pmap, pPanel);
                         _bigShip--;
                         _placingBig = false;
                         break;
                     case false when coords[1] < pmap!.Size - 3:
-                        pmap = IMap.placeShip(coords[0], coords[1], 4, _isHorizontal, pmap);
+                        pmap = IMap.placeShip(coords[0], coords[1], 4, _isHorizontal, pmap, pPanel);
                         _bigShip--;
                         _placingBig = false;
                         break;
@@ -194,12 +195,12 @@ public partial class Classic : Form
                 switch (_isHorizontal)
                 {
                     case true when coords[0] < pmap!.Size - 4:
-                        pmap = IMap.placeShip(coords[0], coords[1], 5, _isHorizontal, pmap);
+                        pmap = IMap.placeShip(coords[0], coords[1], 5, _isHorizontal, pmap, pPanel);
                         _biggerShip--;
                         _placingBigger = false;
                         break;
                     case false when coords[1] < pmap!.Size - 4:
-                        pmap = IMap.placeShip(coords[0], coords[1], 5, _isHorizontal, pmap);
+                        pmap = IMap.placeShip(coords[0], coords[1], 5, _isHorizontal, pmap, pPanel);
                         _biggerShip--;
                         _placingBigger = false;
                         break;
@@ -212,22 +213,22 @@ public partial class Classic : Form
                 if (pmap!.Matrix[coords2[0], coords2[1]] == Map.Ship)
                     butn.BackColor = Color.Black;
                 else if (pmap.Matrix[coords2[0], coords2[1]] == Map.WreckedShip)
-                    butn.BackColor = Color.FromArgb(150,150,10,50);
+                    butn.BackColor = Color.FromArgb(150, 150, 10, 50);
                 else if (pmap.Matrix[coords2[0], coords2[1]] == Map.FailedMissile)
-                    butn.BackColor = Color.FromArgb(150,25,50,200);
+                    butn.BackColor = Color.FromArgb(150, 25, 50, 200);
                 else
-                    butn.BackColor = Color.FromArgb(150,50,100,250);
+                    butn.BackColor = Color.FromArgb(150, 50, 100, 250);
             }
 
             if (_biggerShip == 0 && _bigShip == 0 && _normalShip == 0 && _smolShip == 0)
             {
                 button7.Enabled = true;
-                button6.Enabled = false;
+                btDirection.Enabled = false;
             }
         }
 
         // Habilitar/deshabilitar botones de colocación de barcos según la disponibilidad de barcos
-        button2.Enabled = _smolShip != 0;
+        btSmallShip.Enabled = _smolShip != 0;
         button3.Enabled = _normalShip != 0;
         button4.Enabled = _bigShip != 0;
         button5.Enabled = _biggerShip != 0;
@@ -246,7 +247,7 @@ public partial class Classic : Form
             pPanel.Visible = false;
             label7.Visible = true;
             label7.Text = @"You Lost";
-            button1.Text = @"Reset";
+            btStart.Text = @"Reset";
         }
         else
         {
@@ -259,7 +260,7 @@ public partial class Classic : Form
                 pPanel.Visible = false;
                 label7.Visible = true;
                 label7.Text = @"You Won";
-                button1.Text = @"Reset";
+                btStart.Text = @"Reset";
             }
             else
             {
@@ -270,12 +271,12 @@ public partial class Classic : Form
                 pPanel.Visible = false;
                 label7.Visible = true;
                 label7.Text = @"Both Lost";
-                button1.Text = @"Reset";
+                btStart.Text = @"Reset";
             }
         }
     }
 
-    private void button1_Click(object sender, EventArgs e)
+    private void btStart_Click(object sender, EventArgs e)
     {
         pmap = new Map();
         emap = new Map();
@@ -312,15 +313,15 @@ public partial class Classic : Form
         if (!_gaming)
         {
             // Configuración de la interfaz para el inicio del juego
-            button1.Text = @"End Game";
+            btStart.Text = @"End Game";
             ePanel.Enabled = false;
             pPanel.Enabled = true;
             shipPanel.Enabled = true;
-            button2.Enabled = true;
+            btSmallShip.Enabled = true;
             button3.Enabled = true;
             button4.Enabled = true;
             button5.Enabled = true;
-            button6.Enabled = true;
+            btDirection.Enabled = true;
             _gaming = true;
 
             // Configuración de la interfaz para el mapa del enemigo
@@ -331,22 +332,24 @@ public partial class Classic : Form
                 for (var j = 0; j < emap.Size; j++)
                 {
                     // Crear y configurar botón del mapa del enemigo
-                    var button = new Button();
-                    button.Left = left;
-                    button.Top = top;
-                    button.Width = width;
-                    button.Height = height;
-                    button.Margin = new Padding(0, 0, 0, 0);
-                    button.FlatStyle = FlatStyle.Flat;
-                    button.Location = new Point(left, top);
-                    button.Name = i + ";" + j;
-                    button.Text = i + @";" + j;
-                    button.Click += btnCoord_Click!;
-                    button.BackColor = Color.FromArgb(150,50,100,250);
-                    ePanel.Controls.Add(button); // Agregar botón al panel
-                    top += button.Height;
+                    var spot = new Spot();
+                    spot.Left = left;
+                    spot.Top = top;
+                    spot.Width = width;
+                    spot.Height = height;
+                    spot.Margin = new Padding(0, 0, 0, 0);
+                    spot.FlatStyle = FlatStyle.Flat;
+                    spot.Location = new Point(left, top);
+                    spot.Name = i + ";" + j;
+                    spot.Text = i + @";" + j;
+                    spot.Click += btnCoord_Click!;
+                    spot.BackColor = Color.FromArgb(150, 50, 100, 250);
+                    spot.Row = i; // Guardar la fila
+                    spot.Column = j; // Guardar la columna
+                    spot.IsBombed = false;
+                    ePanel.Controls.Add(spot); // Agregar botón al panel
+                    top += spot.Height;
                 }
-
                 left += width;
                 top -= height * emap.Size;
             }
@@ -359,21 +362,23 @@ public partial class Classic : Form
                 for (var j = 0; j < emap.Size; j++)
                 {
                     // Crear y configurar botón del mapa del jugador
-                    var button = new Button();
-                    button.Left = left;
-                    button.Top = top;
-                    button.Width = width;
-                    button.Height = height;
-                    button.FlatStyle = FlatStyle.Flat;
-                    button.Location = new Point(left, top);
-                    button.Name = i + ";" + j;
-                    button.Text = i + @";" + j;
-                    button.Click += btnCoord_Click!;
-                    button.BackColor = Color.FromArgb(150,50,100,250);
-                    pPanel.Controls.Add(button); // Agregar botón al panel
-                    top += button.Height;
+                    var spot = new Spot();
+                    spot.Left = left;
+                    spot.Top = top;
+                    spot.Width = width;
+                    spot.Height = height;
+                    spot.FlatStyle = FlatStyle.Flat;
+                    spot.Location = new Point(left, top);
+                    spot.Name = i + ";" + j;
+                    spot.Text = i + @";" + j;
+                    spot.Click += btnCoord_Click!;
+                    spot.BackColor = Color.FromArgb(150, 50, 100, 250);
+                    spot.Row = i; // Guardar la fila
+                    spot.Column = j; // Guardar la columna
+                    spot.IsBombed = false;
+                    pPanel.Controls.Add(spot); // Agregar botón al panel
+                    top += spot.Height;
                 }
-
                 left += width;
                 top -= height * emap.Size;
             }
@@ -384,17 +389,17 @@ public partial class Classic : Form
             ePanel.Visible = false;
             pPanel.Visible = false;
             shipPanel.Visible = false;
-            button1.Text = @"Start";
+            btStart.Text = @"Start";
             _gaming = false;
             _atacking = false;
 
             // Limpiar los controles de los paneles
             while (ePanel.Controls.Count > 0)
-                foreach (Button button in ePanel.Controls)
-                    ePanel.Controls.Remove(button);
+                foreach (Spot spot in ePanel.Controls)
+                    ePanel.Controls.Remove(spot);
             while (pPanel.Controls.Count > 0)
-                foreach (Button button in pPanel.Controls)
-                    pPanel.Controls.Remove(button);
+                foreach (Spot spot in pPanel.Controls)
+                    pPanel.Controls.Remove(spot);
         }
     }
     private void gmPanel_Paint(object sender, PaintEventArgs e)
@@ -413,21 +418,21 @@ public partial class Classic : Form
         Program.MainMenu!.Show();
     }
 
-    private void button6_Click(object sender, EventArgs e)
+    private void btDirection_Click(object sender, EventArgs e)
     {
-        if (button6.Text == @"Horizontal")
+        if (btDirection.Text == @"Horizontal")
         {
-            button6.Text = @"Vertical";
+            btDirection.Text = @"Vertical";
             _isHorizontal = false;
         }
         else
         {
-            button6.Text = @"Horizontal";
+            btDirection.Text = @"Horizontal";
             _isHorizontal = true;
         }
     }
 
-    private void button2_Click(object sender, EventArgs e)
+    private void btSmallShip_Click(object sender, EventArgs e)
     {
         if (_smolShip > 0)
         {
@@ -435,7 +440,7 @@ public partial class Classic : Form
             shipPanel.Enabled = false;
         }
 
-        button2.Enabled = false;
+        btSmallShip.Enabled = false;
     }
 
     private void button3_Click(object sender, EventArgs e)
@@ -474,7 +479,7 @@ public partial class Classic : Form
     private void button7_Click(object sender, EventArgs e)
     {
         // IMatch.save(Match);
-        
+
         // Deshabilitar la capacidad de colocar barcos en el panel del jugador
         pPanel.Enabled = false;
 
@@ -520,7 +525,7 @@ public partial class Classic : Form
             }
 
             // Colocar el barco en la posición encontrada
-            emap = IMap.placeShip(eX, eY, 2, horisontal, emap);
+            emap = IMap.placeShip(eX, eY, 2, horisontal, emap, ePanel);
         }
 
         // Repetir el proceso para los otros tamaños de barco
@@ -541,7 +546,7 @@ public partial class Classic : Form
                 if (attempt > 50) break;
             }
 
-            emap = IMap.placeShip(eX, eY, 3, horisontal, emap);
+            emap = IMap.placeShip(eX, eY, 3, horisontal, emap, ePanel);
         }
 
         for (var i = 0; i < int.Parse(numericUpDown4.Value.ToString()); i++)
@@ -561,7 +566,7 @@ public partial class Classic : Form
                 if (attempt > 50) break;
             }
 
-            emap = IMap.placeShip(eX, eY, 4, horisontal, emap);
+            emap = IMap.placeShip(eX, eY, 4, horisontal, emap, ePanel);
         }
 
         for (var i = 0; i < int.Parse(numericUpDown5.Value.ToString()); i++)
@@ -580,10 +585,35 @@ public partial class Classic : Form
                 if (!occupied) break;
                 if (attempt > 50) break;
             }
-            emap = IMap.placeShip(eX, eY, 5, horisontal, emap);
+            emap = IMap.placeShip(eX, eY, 5, horisontal, emap, ePanel);
         }
 
         // Actualizar la representación visual en el panel del enemigo
-        foreach (Button btn in ePanel.Controls) btn.BackColor = Color.FromArgb(150,50,100,250);
+        foreach (Button btn in ePanel.Controls) btn.BackColor = Color.FromArgb(150, 50, 100, 250);
+    }
+
+    private void btSave_Click(object sender, EventArgs e)
+    {
+        if (_gaming)
+        {
+            pMap.Save(emap);
+            pMap.Save(pmap);
+            foreach (Spot spot in ePanel.Controls)
+            {
+                pSpot.Save(spot);
+            }
+            foreach (Spot spot in pPanel.Controls)
+            {
+                pSpot.Save(spot);
+            }
+            match = new Match();
+            match.PlayerId = Program.User.Id;
+            match.PlayerMapId = pmap.Id;
+            match.PcMapId = emap.Id;
+            match.Name = DateTime.Now.ToString();
+            pMatch.Save(match);
+            Hide();
+            Program.MainMenu!.Show();
+        }
     }
 }

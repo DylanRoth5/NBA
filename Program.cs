@@ -1,4 +1,5 @@
 using NBA.Conection;
+using NBA.Entities;
 using NBA.Forms;
 
 namespace NBA;
@@ -11,6 +12,7 @@ static class Program
     public static MainMenu MainMenu;
     public static Classic Classic;
     public static TimeRush TimeRush;
+    public static Player User;
     [STAThread]
     static void Main()
     {

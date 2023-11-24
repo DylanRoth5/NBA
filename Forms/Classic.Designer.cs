@@ -39,19 +39,20 @@ partial class Classic
         numericUpDown3 = new NumericUpDown();
         numericUpDown4 = new NumericUpDown();
         numericUpDown5 = new NumericUpDown();
-        button1 = new Button();
+        btStart = new Button();
         ePanel = new Panel();
         pPanel = new Panel();
         shipPanel = new Panel();
         button7 = new Button();
         label6 = new Label();
-        button6 = new Button();
+        btDirection = new Button();
         button5 = new Button();
         button4 = new Button();
         button3 = new Button();
-        button2 = new Button();
+        btSmallShip = new Button();
         label7 = new Label();
         ConfigPanel = new Panel();
+        btSave = new Button();
         ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
@@ -66,10 +67,10 @@ partial class Classic
         btSoloClose.BackColor = Color.FromArgb(200, 0, 0, 0);
         btSoloClose.FlatStyle = FlatStyle.Flat;
         btSoloClose.ForeColor = Color.CornflowerBlue;
-        btSoloClose.Location = new Point(12, 11);
+        btSoloClose.Location = new Point(15, 11);
         btSoloClose.Margin = new Padding(3, 2, 3, 2);
         btSoloClose.Name = "btSoloClose";
-        btSoloClose.Size = new Size(82, 22);
+        btSoloClose.Size = new Size(124, 25);
         btSoloClose.TabIndex = 0;
         btSoloClose.Text = "CERRAR";
         btSoloClose.UseVisualStyleBackColor = false;
@@ -191,17 +192,17 @@ partial class Classic
         numericUpDown5.TabIndex = 10;
         numericUpDown5.Value = new decimal(new int[] { 1, 0, 0, 0 });
         // 
-        // button1
+        // btStart
         // 
-        button1.FlatStyle = FlatStyle.Flat;
-        button1.ForeColor = Color.CornflowerBlue;
-        button1.Location = new Point(9, 161);
-        button1.Name = "button1";
-        button1.Size = new Size(105, 30);
-        button1.TabIndex = 11;
-        button1.Text = "Start";
-        button1.UseVisualStyleBackColor = true;
-        button1.Click += button1_Click;
+        btStart.FlatStyle = FlatStyle.Flat;
+        btStart.ForeColor = Color.CornflowerBlue;
+        btStart.Location = new Point(9, 161);
+        btStart.Name = "btStart";
+        btStart.Size = new Size(105, 30);
+        btStart.TabIndex = 11;
+        btStart.Text = "Start";
+        btStart.UseVisualStyleBackColor = true;
+        btStart.Click += btStart_Click;
         // 
         // ePanel
         // 
@@ -227,12 +228,12 @@ partial class Classic
         shipPanel.BackColor = Color.FromArgb(200, 0, 0, 0);
         shipPanel.Controls.Add(button7);
         shipPanel.Controls.Add(label6);
-        shipPanel.Controls.Add(button6);
+        shipPanel.Controls.Add(btDirection);
         shipPanel.Controls.Add(button5);
         shipPanel.Controls.Add(button4);
         shipPanel.Controls.Add(button3);
-        shipPanel.Controls.Add(button2);
-        shipPanel.Location = new Point(12, 246);
+        shipPanel.Controls.Add(btSmallShip);
+        shipPanel.Location = new Point(15, 269);
         shipPanel.Name = "shipPanel";
         shipPanel.Size = new Size(124, 257);
         shipPanel.TabIndex = 15;
@@ -262,17 +263,17 @@ partial class Classic
         label6.TabIndex = 5;
         label6.Text = "Set Ships";
         // 
-        // button6
+        // btDirection
         // 
-        button6.FlatStyle = FlatStyle.Flat;
-        button6.ForeColor = Color.CornflowerBlue;
-        button6.Location = new Point(9, 31);
-        button6.Name = "button6";
-        button6.Size = new Size(105, 31);
-        button6.TabIndex = 4;
-        button6.Text = "Horizontal";
-        button6.UseVisualStyleBackColor = true;
-        button6.Click += button6_Click;
+        btDirection.FlatStyle = FlatStyle.Flat;
+        btDirection.ForeColor = Color.CornflowerBlue;
+        btDirection.Location = new Point(9, 31);
+        btDirection.Name = "btDirection";
+        btDirection.Size = new Size(105, 31);
+        btDirection.TabIndex = 4;
+        btDirection.Text = "Horizontal";
+        btDirection.UseVisualStyleBackColor = true;
+        btDirection.Click += btDirection_Click;
         // 
         // button5
         // 
@@ -310,17 +311,17 @@ partial class Classic
         button3.UseVisualStyleBackColor = true;
         button3.Click += button3_Click;
         // 
-        // button2
+        // btSmallShip
         // 
-        button2.FlatStyle = FlatStyle.Flat;
-        button2.ForeColor = Color.CornflowerBlue;
-        button2.Location = new Point(9, 68);
-        button2.Name = "button2";
-        button2.Size = new Size(105, 31);
-        button2.TabIndex = 0;
-        button2.Text = "SmallShip";
-        button2.UseVisualStyleBackColor = true;
-        button2.Click += button2_Click;
+        btSmallShip.FlatStyle = FlatStyle.Flat;
+        btSmallShip.ForeColor = Color.CornflowerBlue;
+        btSmallShip.Location = new Point(9, 68);
+        btSmallShip.Name = "btSmallShip";
+        btSmallShip.Size = new Size(105, 31);
+        btSmallShip.TabIndex = 0;
+        btSmallShip.Text = "SmallShip";
+        btSmallShip.UseVisualStyleBackColor = true;
+        btSmallShip.Click += btSmallShip_Click;
         // 
         // label7
         // 
@@ -338,7 +339,7 @@ partial class Classic
         // ConfigPanel
         // 
         ConfigPanel.BackColor = Color.FromArgb(200, 0, 0, 0);
-        ConfigPanel.Controls.Add(button1);
+        ConfigPanel.Controls.Add(btStart);
         ConfigPanel.Controls.Add(label5);
         ConfigPanel.Controls.Add(numericUpDown5);
         ConfigPanel.Controls.Add(label4);
@@ -349,10 +350,24 @@ partial class Classic
         ConfigPanel.Controls.Add(label2);
         ConfigPanel.Controls.Add(numericUpDown3);
         ConfigPanel.Controls.Add(label3);
-        ConfigPanel.Location = new Point(12, 38);
+        ConfigPanel.Location = new Point(15, 65);
         ConfigPanel.Name = "ConfigPanel";
         ConfigPanel.Size = new Size(124, 202);
         ConfigPanel.TabIndex = 17;
+        // 
+        // btSave
+        // 
+        btSave.BackColor = Color.FromArgb(200, 0, 0, 0);
+        btSave.FlatStyle = FlatStyle.Flat;
+        btSave.ForeColor = Color.CornflowerBlue;
+        btSave.Location = new Point(15, 38);
+        btSave.Margin = new Padding(3, 2, 3, 2);
+        btSave.Name = "btSave";
+        btSave.Size = new Size(124, 25);
+        btSave.TabIndex = 18;
+        btSave.Text = "GUARDAR";
+        btSave.UseVisualStyleBackColor = false;
+        btSave.Click += btSave_Click;
         // 
         // Classic
         // 
@@ -360,6 +375,7 @@ partial class Classic
         AutoScaleMode = AutoScaleMode.Font;
         BackgroundImage = Properties.Resources.Fondo2;
         ClientSize = new Size(1175, 540);
+        Controls.Add(btSave);
         Controls.Add(ConfigPanel);
         Controls.Add(label7);
         Controls.Add(shipPanel);
@@ -398,17 +414,18 @@ partial class Classic
     private NumericUpDown numericUpDown3;
     private NumericUpDown numericUpDown4;
     private NumericUpDown numericUpDown5;
-    private Button button1;
+    private Button btStart;
     private Panel ePanel;
     private Panel pPanel;
     private Panel shipPanel;
-    private Button button6;
+    private Button btDirection;
     private Button button5;
     private Button button4;
     private Button button3;
-    private Button button2;
+    private Button btSmallShip;
     private Label label6;
     private Button button7;
     private Label label7;
     private Panel ConfigPanel;
+    private Button btSave;
 }

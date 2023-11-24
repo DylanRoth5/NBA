@@ -159,6 +159,7 @@ public partial class MainMenu : Form
                 tbPassword.Focus();
             }
         }
+        //Program.User = usuario;
     }
 
     private void llRegister_Click(object sender, EventArgs e)
@@ -202,6 +203,7 @@ public partial class MainMenu : Form
             plLogin.Visible = false;
             btCoop.Enabled = true;
             btSolo.Enabled = true;
+            Program.User = u;
         }
     }
 }
