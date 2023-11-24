@@ -200,7 +200,9 @@ public partial class MainMenu : Form
             u.User = tbUserR.Text;
             u.Password = tbPasswordR.Text;
             pPlayer.Insert(u);
-            // Close();
+            plLogin.Visible = false;
+            btCoop.Enabled = true;
+            btSolo.Enabled = true;
         }
     }
 }
