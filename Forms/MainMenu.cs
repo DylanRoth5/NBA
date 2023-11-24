@@ -10,7 +10,7 @@ public partial class MainMenu : Form
     public MainMenu()
     {
         InitializeComponent();
-        WindowState = FormWindowState.Maximized;
+        // WindowState = FormWindowState.Maximized;
 
         btCoop.BackColor = Color.FromArgb(128, Color.Black);
         btSolo.BackColor = Color.FromArgb(128, Color.Black);

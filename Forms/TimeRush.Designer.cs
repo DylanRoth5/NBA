@@ -42,24 +42,16 @@
             numericUpDown3 = new NumericUpDown();
             label3 = new Label();
             ll7 = new Label();
-            shipPanel = new Panel();
-            button7 = new Button();
-            label6 = new Label();
-            button6 = new Button();
-            button5 = new Button();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
             pPanel = new Panel();
             plC = new Panel();
             btSoloClose = new Button();
+            label6 = new Label();
             ConfigPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
-            shipPanel.SuspendLayout();
             SuspendLayout();
             // 
             // ConfigPanel
@@ -221,100 +213,6 @@
             ll7.Text = "label7";
             ll7.Visible = false;
             // 
-            // shipPanel
-            // 
-            shipPanel.BackColor = Color.FromArgb(200, 0, 0, 0);
-            shipPanel.Controls.Add(button7);
-            shipPanel.Controls.Add(label6);
-            shipPanel.Controls.Add(button6);
-            shipPanel.Controls.Add(button5);
-            shipPanel.Controls.Add(button4);
-            shipPanel.Controls.Add(button3);
-            shipPanel.Controls.Add(button2);
-            shipPanel.Location = new Point(12, 246);
-            shipPanel.Name = "shipPanel";
-            shipPanel.Size = new Size(124, 257);
-            shipPanel.TabIndex = 21;
-            shipPanel.Visible = false;
-            // 
-            // button7
-            // 
-            button7.Enabled = false;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.ForeColor = Color.CornflowerBlue;
-            button7.Location = new Point(9, 216);
-            button7.Name = "button7";
-            button7.Size = new Size(105, 29);
-            button7.TabIndex = 6;
-            button7.Text = "Ready";
-            button7.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.ForeColor = Color.CornflowerBlue;
-            label6.Location = new Point(14, 7);
-            label6.Name = "label6";
-            label6.Size = new Size(74, 21);
-            label6.TabIndex = 5;
-            label6.Text = "Set Ships";
-            // 
-            // button6
-            // 
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.ForeColor = Color.CornflowerBlue;
-            button6.Location = new Point(9, 31);
-            button6.Name = "button6";
-            button6.Size = new Size(105, 31);
-            button6.TabIndex = 4;
-            button6.Text = "Horizontal";
-            button6.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.ForeColor = Color.CornflowerBlue;
-            button5.Location = new Point(9, 179);
-            button5.Name = "button5";
-            button5.Size = new Size(105, 31);
-            button5.TabIndex = 3;
-            button5.Text = "BiggerShip";
-            button5.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.ForeColor = Color.CornflowerBlue;
-            button4.Location = new Point(9, 142);
-            button4.Name = "button4";
-            button4.Size = new Size(105, 31);
-            button4.TabIndex = 2;
-            button4.Text = "BigShip";
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = Color.CornflowerBlue;
-            button3.Location = new Point(9, 105);
-            button3.Name = "button3";
-            button3.Size = new Size(105, 31);
-            button3.TabIndex = 1;
-            button3.Text = "NormalShip";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = Color.CornflowerBlue;
-            button2.Location = new Point(9, 68);
-            button2.Name = "button2";
-            button2.Size = new Size(105, 31);
-            button2.TabIndex = 0;
-            button2.Text = "SmallShip";
-            button2.UseVisualStyleBackColor = true;
-            // 
             // pPanel
             // 
             pPanel.BackColor = Color.FromArgb(100, 0, 0, 0);
@@ -347,15 +245,29 @@
             btSoloClose.UseVisualStyleBackColor = false;
             btSoloClose.Click += btSoloClose_Click;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.FromArgb(150, 0, 0, 0);
+            label6.Font = new Font("OCR A Extended", 50F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.ForeColor = Color.CornflowerBlue;
+            label6.Location = new Point(450, 350);
+            label6.Name = "label6";
+            label6.Size = new Size(270, 69);
+            label6.TabIndex = 24;
+            label6.Text = "label7";
+            label6.Visible = false;
+            label6.Click += label6_Click;
+            // 
             // TimeRush
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1175, 540);
+            Controls.Add(label6);
             Controls.Add(ConfigPanel);
             Controls.Add(ll7);
-            Controls.Add(shipPanel);
             Controls.Add(pPanel);
             Controls.Add(plC);
             Controls.Add(btSoloClose);
@@ -371,8 +283,6 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
-            shipPanel.ResumeLayout(false);
-            shipPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -433,16 +343,9 @@
         private NumericUpDown numericUpDown3;
         private Label label3;
         private Label ll7;
-        private Panel shipPanel;
-        private Button button7;
-        private Label label6;
-        private Button button6;
-        private Button button5;
-        private Button button4;
-        private Button button3;
-        private Button button2;
         private Panel pPanel;
         private Panel plC;
         private Button btSoloClose;
+        private Label label6;
     }
 }

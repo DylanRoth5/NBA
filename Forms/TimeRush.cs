@@ -17,6 +17,7 @@ public partial class TimeRush : Form
 
     private static Map? emap;
 
+    private static int points;
     private static int _smolShip;
     private static int _normalShip;
     private static int _bigShip;
@@ -27,6 +28,7 @@ public partial class TimeRush : Form
 
     private void btnCoord_Click(object sender, EventArgs e)
     {
+        points++;
         // Obtener el botón que activó el evento
         var btn = (Button)sender;
 
@@ -67,20 +69,14 @@ public partial class TimeRush : Form
                 }
             }
         }
-        if (!IMap.hasShips(emap))
-        {
-            plC.Visible = false;
-            pPanel.Visible = false;
-            ll7.Visible = true;
-            ll7.Text = @"You Won";
-        }
-        else
-        {
-            plC.Visible = false;
-            pPanel.Visible = false;
-            ll7.Visible = true;
-            ll7.Text = @"You Lost";
-        }
+
+        if (IMap.hasShips(emap)) return;
+        plC.Visible = false;
+        pPanel.Visible = false;
+        ll7.Visible = true;
+        label6.Visible = true;
+        ll7.Text = @"You Won";
+        label6.Text = @$"Score: {points}"; 
     }
 
     private void button1_Click(object sender, EventArgs e)
@@ -95,6 +91,7 @@ public partial class TimeRush : Form
         // Configuración inicial de la interfaz gráfica
         plC.Visible = true;
         ll7.Visible = false;
+        label6.Visible = false;
 
         // Configurar el tamaño de los paneles según el tamaño de los mapas
         var height = Size.Width / (17 + emap.Size);
@@ -110,14 +107,10 @@ public partial class TimeRush : Form
         // Verificar si el juego aún no ha comenzado
         if (!_gaming)
         {
+            points = 0;
             // Configuración de la interfaz para el inicio del juego
             button1.Text = @"End Game";
             plC.Enabled = true;
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button5.Enabled = true;
-            button6.Enabled = true;
             _gaming = true;
 
             // Configuración de la interfaz para el mapa del enemigo
@@ -147,6 +140,108 @@ public partial class TimeRush : Form
                 left += width;
                 top -= height * emap.Size;
             }
+
+            // Habilitar la capacidad de atacar en el panel del enemigo
+            plC.Enabled = true;
+
+            // Crear un generador de números aleatorios
+            var r = new Random();
+
+            // Variables para determinar la orientación de los barcos
+            bool horisontal;
+            int eX;
+            int eY;
+            int attempt;
+
+            // Colocar barcos en el mapa del enemigo
+            for (var i = 0; i < int.Parse(numericUpDown2.Value.ToString()); i++)
+            {
+                // Determinar aleatoriamente la orientación del barco (horizontal o vertical)
+                horisontal = r.Next(0, 1) == 0; // 0 o 1 para determinar horizontal o vertical
+
+                // Obtener coordenadas aleatorias para la posición del barco
+                eX = r.Next(0, emap!.Size);
+                eY = r.Next(0, emap.Size);
+                // Inicializar contador de intentos y verificar si la posición está ocupada
+                attempt = 0;
+                var occupied = IMap.isOccupied(eX, eY, 2, horisontal, emap);
+                // Repetir hasta encontrar una posición no ocupada o superar un límite de intentos
+                while (occupied)
+                {
+                    eX = r.Next(0, emap.Size);
+                    eY = r.Next(0, emap.Size);
+                    occupied = IMap.isOccupied(eX, eY, 2, horisontal, emap);
+                    attempt++;
+                    if (!occupied) break;
+                    if (attempt > 50) break;
+                }
+
+                // Colocar el barco en la posición encontrada
+                emap = IMap.placeShip(eX, eY, 2, horisontal, emap);
+            }
+
+            // Repetir el proceso para los otros tamaños de barco
+            for (var i = 0; i < int.Parse(numericUpDown3.Value.ToString()); i++)
+            {
+                horisontal = r.Next(0, 1) == 0;
+                eX = r.Next(0, emap!.Size);
+                eY = r.Next(0, emap.Size);
+                attempt = 0;
+                var occupied = IMap.isOccupied(eX, eY, 3, horisontal, emap);
+                while (occupied)
+                {
+                    eX = r.Next(0, emap.Size);
+                    eY = r.Next(0, emap.Size);
+                    occupied = IMap.isOccupied(eX, eY, 3, horisontal, emap);
+                    attempt++;
+                    if (!occupied) break;
+                    if (attempt > 50) break;
+                }
+
+                emap = IMap.placeShip(eX, eY, 3, horisontal, emap);
+            }
+
+            for (var i = 0; i < int.Parse(numericUpDown4.Value.ToString()); i++)
+            {
+                horisontal = r.Next(0, 1) == 0;
+                eX = r.Next(0, emap!.Size);
+                eY = r.Next(0, emap.Size);
+                attempt = 0;
+                var occupied = IMap.isOccupied(eX, eY, 4, horisontal, emap);
+                while (occupied)
+                {
+                    eX = r.Next(0, emap.Size);
+                    eY = r.Next(0, emap.Size);
+                    occupied = IMap.isOccupied(eX, eY, 4, horisontal, emap);
+                    attempt++;
+                    if (!occupied) break;
+                    if (attempt > 50) break;
+                }
+
+                emap = IMap.placeShip(eX, eY, 4, horisontal, emap);
+            }
+
+            for (var i = 0; i < int.Parse(numericUpDown5.Value.ToString()); i++)
+            {
+                horisontal = r.Next(0, 1) == 0;
+                eX = r.Next(0, emap!.Size);
+                eY = r.Next(0, emap.Size);
+                attempt = 0;
+                var occupied = IMap.isOccupied(eX, eY, 5, horisontal, emap);
+                while (occupied)
+                {
+                    eX = r.Next(0, emap.Size);
+                    eY = r.Next(0, emap.Size);
+                    occupied = IMap.isOccupied(eX, eY, 5, horisontal, emap);
+                    attempt++;
+                    if (!occupied) break;
+                    if (attempt > 50) break;
+                }
+                emap = IMap.placeShip(eX, eY, 5, horisontal, emap);
+            }
+
+            // Actualizar la representación visual en el panel del enemigo
+            foreach (Button btn in plC.Controls) btn.BackColor = Color.FromArgb(150, 50, 100, 250);
         }
         else
         {
@@ -273,5 +368,10 @@ public partial class TimeRush : Form
     {
         Hide();
         Program.MainMenu!.Show();
+    }
+
+    private void label6_Click(object sender, EventArgs e)
+    {
+
     }
 }
