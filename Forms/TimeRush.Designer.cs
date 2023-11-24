@@ -28,543 +28,356 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            btCoopClose = new Button();
-            panel1 = new Panel();
-            d10 = new Button();
-            d9 = new Button();
-            d8 = new Button();
-            d7 = new Button();
-            d6 = new Button();
-            d5 = new Button();
-            d4 = new Button();
-            d3 = new Button();
-            d2 = new Button();
-            d1 = new Button();
-            b10 = new Button();
-            b9 = new Button();
-            b8 = new Button();
-            b7 = new Button();
-            b6 = new Button();
-            b5 = new Button();
-            b4 = new Button();
-            b3 = new Button();
-            c10 = new Button();
-            c9 = new Button();
-            c8 = new Button();
-            c7 = new Button();
-            c6 = new Button();
-            c5 = new Button();
-            c4 = new Button();
-            c3 = new Button();
-            c2 = new Button();
-            c1 = new Button();
-            b2 = new Button();
-            b1 = new Button();
-            a10 = new Button();
-            a9 = new Button();
-            a8 = new Button();
-            a7 = new Button();
-            a6 = new Button();
-            a5 = new Button();
-            a4 = new Button();
-            a3 = new Button();
-            a2 = new Button();
-            a1 = new Button();
-            btStartCoop = new Button();
-            timer1 = new System.Windows.Forms.Timer(components);
-            panel1.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimeRush));
+            ConfigPanel = new Panel();
+            button1 = new Button();
+            label5 = new Label();
+            numericUpDown5 = new NumericUpDown();
+            label4 = new Label();
+            numericUpDown4 = new NumericUpDown();
+            label1 = new Label();
+            numericUpDown1 = new NumericUpDown();
+            numericUpDown2 = new NumericUpDown();
+            label2 = new Label();
+            numericUpDown3 = new NumericUpDown();
+            label3 = new Label();
+            ll7 = new Label();
+            shipPanel = new Panel();
+            button7 = new Button();
+            label6 = new Label();
+            button6 = new Button();
+            button5 = new Button();
+            button4 = new Button();
+            button3 = new Button();
+            button2 = new Button();
+            pPanel = new Panel();
+            plC = new Panel();
+            btSoloClose = new Button();
+            ConfigPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
+            shipPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // btCoopClose
-            // 
-            btCoopClose.Location = new Point(12, 12);
-            btCoopClose.Name = "btCoopClose";
-            btCoopClose.Size = new Size(94, 29);
-            btCoopClose.TabIndex = 0;
-            btCoopClose.Text = "CERRAR";
-            btCoopClose.UseVisualStyleBackColor = true;
-            btCoopClose.Click += btCoopClose_Click;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.CornflowerBlue;
-            panel1.Controls.Add(d10);
-            panel1.Controls.Add(d9);
-            panel1.Controls.Add(d8);
-            panel1.Controls.Add(d7);
-            panel1.Controls.Add(d6);
-            panel1.Controls.Add(d5);
-            panel1.Controls.Add(d4);
-            panel1.Controls.Add(d3);
-            panel1.Controls.Add(d2);
-            panel1.Controls.Add(d1);
-            panel1.Controls.Add(b10);
-            panel1.Controls.Add(b9);
-            panel1.Controls.Add(b8);
-            panel1.Controls.Add(b7);
-            panel1.Controls.Add(b6);
-            panel1.Controls.Add(b5);
-            panel1.Controls.Add(b4);
-            panel1.Controls.Add(b3);
-            panel1.Controls.Add(c10);
-            panel1.Controls.Add(c9);
-            panel1.Controls.Add(c8);
-            panel1.Controls.Add(c7);
-            panel1.Controls.Add(c6);
-            panel1.Controls.Add(c5);
-            panel1.Controls.Add(c4);
-            panel1.Controls.Add(c3);
-            panel1.Controls.Add(c2);
-            panel1.Controls.Add(c1);
-            panel1.Controls.Add(b2);
-            panel1.Controls.Add(b1);
-            panel1.Controls.Add(a10);
-            panel1.Controls.Add(a9);
-            panel1.Controls.Add(a8);
-            panel1.Controls.Add(a7);
-            panel1.Controls.Add(a6);
-            panel1.Controls.Add(a5);
-            panel1.Controls.Add(a4);
-            panel1.Controls.Add(a3);
-            panel1.Controls.Add(a2);
-            panel1.Controls.Add(a1);
-            panel1.Location = new Point(135, 40);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1068, 508);
-            panel1.TabIndex = 1;
-            // 
-            // d10
-            // 
-            d10.Location = new Point(921, 338);
-            d10.Name = "d10";
-            d10.Size = new Size(90, 90);
-            d10.TabIndex = 39;
-            d10.UseVisualStyleBackColor = true;
-            d10.Visible = false;
-            d10.Click += BotonPosicion_Click;
-            // 
-            // d9
-            // 
-            d9.Location = new Point(825, 338);
-            d9.Name = "d9";
-            d9.Size = new Size(90, 90);
-            d9.TabIndex = 38;
-            d9.UseVisualStyleBackColor = true;
-            d9.Visible = false;
-            d9.Click += BotonPosicion_Click;
-            // 
-            // d8
-            // 
-            d8.Location = new Point(729, 338);
-            d8.Name = "d8";
-            d8.Size = new Size(90, 90);
-            d8.TabIndex = 37;
-            d8.UseVisualStyleBackColor = true;
-            d8.Visible = false;
-            d8.Click += BotonPosicion_Click;
-            // 
-            // d7
-            // 
-            d7.Location = new Point(633, 338);
-            d7.Name = "d7";
-            d7.Size = new Size(90, 90);
-            d7.TabIndex = 36;
-            d7.UseVisualStyleBackColor = true;
-            d7.Visible = false;
-            d7.Click += BotonPosicion_Click;
-            // 
-            // d6
-            // 
-            d6.Location = new Point(537, 338);
-            d6.Name = "d6";
-            d6.Size = new Size(90, 90);
-            d6.TabIndex = 35;
-            d6.UseVisualStyleBackColor = true;
-            d6.Visible = false;
-            d6.Click += BotonPosicion_Click;
-            // 
-            // d5
-            // 
-            d5.Location = new Point(441, 338);
-            d5.Name = "d5";
-            d5.Size = new Size(90, 90);
-            d5.TabIndex = 34;
-            d5.UseVisualStyleBackColor = true;
-            d5.Visible = false;
-            d5.Click += BotonPosicion_Click;
-            // 
-            // d4
-            // 
-            d4.Location = new Point(345, 338);
-            d4.Name = "d4";
-            d4.Size = new Size(90, 90);
-            d4.TabIndex = 33;
-            d4.UseVisualStyleBackColor = true;
-            d4.Visible = false;
-            d4.Click += BotonPosicion_Click;
-            // 
-            // d3
-            // 
-            d3.Location = new Point(249, 338);
-            d3.Name = "d3";
-            d3.Size = new Size(90, 90);
-            d3.TabIndex = 32;
-            d3.UseVisualStyleBackColor = true;
-            d3.Visible = false;
-            d3.Click += BotonPosicion_Click;
-            // 
-            // d2
-            // 
-            d2.Location = new Point(153, 338);
-            d2.Name = "d2";
-            d2.Size = new Size(90, 90);
-            d2.TabIndex = 31;
-            d2.UseVisualStyleBackColor = true;
-            d2.Visible = false;
-            d2.Click += BotonPosicion_Click;
-            // 
-            // d1
-            // 
-            d1.Location = new Point(57, 338);
-            d1.Name = "d1";
-            d1.Size = new Size(90, 90);
-            d1.TabIndex = 30;
-            d1.UseVisualStyleBackColor = true;
-            d1.Visible = false;
-            d1.Click += BotonPosicion_Click;
-            // 
-            // b10
-            // 
-            b10.Location = new Point(921, 146);
-            b10.Name = "b10";
-            b10.Size = new Size(90, 90);
-            b10.TabIndex = 29;
-            b10.UseVisualStyleBackColor = true;
-            b10.Visible = false;
-            b10.Click += BotonPosicion_Click;
-            // 
-            // b9
-            // 
-            b9.Location = new Point(825, 146);
-            b9.Name = "b9";
-            b9.Size = new Size(90, 90);
-            b9.TabIndex = 28;
-            b9.UseVisualStyleBackColor = true;
-            b9.Visible = false;
-            b9.Click += BotonPosicion_Click;
-            // 
-            // b8
-            // 
-            b8.Location = new Point(729, 146);
-            b8.Name = "b8";
-            b8.Size = new Size(90, 90);
-            b8.TabIndex = 27;
-            b8.UseVisualStyleBackColor = true;
-            b8.Visible = false;
-            b8.Click += BotonPosicion_Click;
-            // 
-            // b7
-            // 
-            b7.Location = new Point(633, 146);
-            b7.Name = "b7";
-            b7.Size = new Size(90, 90);
-            b7.TabIndex = 26;
-            b7.UseVisualStyleBackColor = true;
-            b7.Visible = false;
-            b7.Click += BotonPosicion_Click;
-            // 
-            // b6
-            // 
-            b6.Location = new Point(537, 146);
-            b6.Name = "b6";
-            b6.Size = new Size(90, 90);
-            b6.TabIndex = 25;
-            b6.UseVisualStyleBackColor = true;
-            b6.Visible = false;
-            b6.Click += BotonPosicion_Click;
-            // 
-            // b5
-            // 
-            b5.Location = new Point(441, 146);
-            b5.Name = "b5";
-            b5.Size = new Size(90, 90);
-            b5.TabIndex = 24;
-            b5.UseVisualStyleBackColor = true;
-            b5.Visible = false;
-            b5.Click += BotonPosicion_Click;
-            // 
-            // b4
-            // 
-            b4.Location = new Point(345, 146);
-            b4.Name = "b4";
-            b4.Size = new Size(90, 90);
-            b4.TabIndex = 23;
-            b4.UseVisualStyleBackColor = true;
-            b4.Visible = false;
-            b4.Click += BotonPosicion_Click;
-            // 
-            // b3
-            // 
-            b3.Location = new Point(249, 146);
-            b3.Name = "b3";
-            b3.Size = new Size(90, 90);
-            b3.TabIndex = 22;
-            b3.UseVisualStyleBackColor = true;
-            b3.Visible = false;
-            b3.Click += BotonPosicion_Click;
-            // 
-            // c10
-            // 
-            c10.Location = new Point(921, 242);
-            c10.Name = "c10";
-            c10.Size = new Size(90, 90);
-            c10.TabIndex = 21;
-            c10.UseVisualStyleBackColor = true;
-            c10.Visible = false;
-            c10.Click += BotonPosicion_Click;
-            // 
-            // c9
-            // 
-            c9.Location = new Point(825, 242);
-            c9.Name = "c9";
-            c9.Size = new Size(90, 90);
-            c9.TabIndex = 20;
-            c9.UseVisualStyleBackColor = true;
-            c9.Visible = false;
-            c9.Click += BotonPosicion_Click;
-            // 
-            // c8
-            // 
-            c8.Location = new Point(729, 242);
-            c8.Name = "c8";
-            c8.Size = new Size(90, 90);
-            c8.TabIndex = 19;
-            c8.UseVisualStyleBackColor = true;
-            c8.Visible = false;
-            c8.Click += BotonPosicion_Click;
-            // 
-            // c7
-            // 
-            c7.Location = new Point(633, 242);
-            c7.Name = "c7";
-            c7.Size = new Size(90, 90);
-            c7.TabIndex = 18;
-            c7.UseVisualStyleBackColor = true;
-            c7.Visible = false;
-            c7.Click += BotonPosicion_Click;
-            // 
-            // c6
-            // 
-            c6.Location = new Point(537, 242);
-            c6.Name = "c6";
-            c6.Size = new Size(90, 90);
-            c6.TabIndex = 17;
-            c6.UseVisualStyleBackColor = true;
-            c6.Visible = false;
-            c6.Click += BotonPosicion_Click;
-            // 
-            // c5
-            // 
-            c5.Location = new Point(441, 242);
-            c5.Name = "c5";
-            c5.Size = new Size(90, 90);
-            c5.TabIndex = 16;
-            c5.UseVisualStyleBackColor = true;
-            c5.Visible = false;
-            c5.Click += BotonPosicion_Click;
-            // 
-            // c4
-            // 
-            c4.Location = new Point(345, 242);
-            c4.Name = "c4";
-            c4.Size = new Size(90, 90);
-            c4.TabIndex = 15;
-            c4.UseVisualStyleBackColor = true;
-            c4.Visible = false;
-            c4.Click += BotonPosicion_Click;
-            // 
-            // c3
-            // 
-            c3.Location = new Point(249, 242);
-            c3.Name = "c3";
-            c3.Size = new Size(90, 90);
-            c3.TabIndex = 14;
-            c3.UseVisualStyleBackColor = true;
-            c3.Visible = false;
-            c3.Click += BotonPosicion_Click;
-            // 
-            // c2
-            // 
-            c2.Location = new Point(153, 242);
-            c2.Name = "c2";
-            c2.Size = new Size(90, 90);
-            c2.TabIndex = 13;
-            c2.UseVisualStyleBackColor = true;
-            c2.Visible = false;
-            c2.Click += BotonPosicion_Click;
-            // 
-            // c1
-            // 
-            c1.Location = new Point(57, 242);
-            c1.Name = "c1";
-            c1.Size = new Size(90, 90);
-            c1.TabIndex = 12;
-            c1.UseVisualStyleBackColor = true;
-            c1.Visible = false;
-            c1.Click += BotonPosicion_Click;
-            // 
-            // b2
-            // 
-            b2.Location = new Point(153, 146);
-            b2.Name = "b2";
-            b2.Size = new Size(90, 90);
-            b2.TabIndex = 11;
-            b2.UseVisualStyleBackColor = true;
-            b2.Visible = false;
-            b2.Click += BotonPosicion_Click;
-            // 
-            // b1
-            // 
-            b1.Location = new Point(57, 146);
-            b1.Name = "b1";
-            b1.Size = new Size(90, 90);
-            b1.TabIndex = 10;
-            b1.UseVisualStyleBackColor = true;
-            b1.Visible = false;
-            b1.Click += BotonPosicion_Click;
-            // 
-            // a10
-            // 
-            a10.Location = new Point(921, 50);
-            a10.Name = "a10";
-            a10.Size = new Size(90, 90);
-            a10.TabIndex = 9;
-            a10.UseVisualStyleBackColor = true;
-            a10.Visible = false;
-            a10.Click += BotonPosicion_Click;
-            // 
-            // a9
-            // 
-            a9.Location = new Point(825, 50);
-            a9.Name = "a9";
-            a9.Size = new Size(90, 90);
-            a9.TabIndex = 8;
-            a9.UseVisualStyleBackColor = true;
-            a9.Visible = false;
-            a9.Click += BotonPosicion_Click;
-            // 
-            // a8
-            // 
-            a8.Location = new Point(729, 50);
-            a8.Name = "a8";
-            a8.Size = new Size(90, 90);
-            a8.TabIndex = 7;
-            a8.UseVisualStyleBackColor = true;
-            a8.Visible = false;
-            a8.Click += BotonPosicion_Click;
-            // 
-            // a7
-            // 
-            a7.Location = new Point(633, 50);
-            a7.Name = "a7";
-            a7.Size = new Size(90, 90);
-            a7.TabIndex = 6;
-            a7.UseVisualStyleBackColor = true;
-            a7.Visible = false;
-            a7.Click += BotonPosicion_Click;
-            // 
-            // a6
-            // 
-            a6.Location = new Point(537, 50);
-            a6.Name = "a6";
-            a6.Size = new Size(90, 90);
-            a6.TabIndex = 5;
-            a6.UseVisualStyleBackColor = true;
-            a6.Visible = false;
-            a6.Click += BotonPosicion_Click;
-            // 
-            // a5
-            // 
-            a5.Location = new Point(441, 50);
-            a5.Name = "a5";
-            a5.Size = new Size(90, 90);
-            a5.TabIndex = 4;
-            a5.UseVisualStyleBackColor = true;
-            a5.Visible = false;
-            a5.Click += BotonPosicion_Click;
-            // 
-            // a4
-            // 
-            a4.Location = new Point(345, 50);
-            a4.Name = "a4";
-            a4.Size = new Size(90, 90);
-            a4.TabIndex = 3;
-            a4.UseVisualStyleBackColor = true;
-            a4.Visible = false;
-            a4.Click += BotonPosicion_Click;
-            // 
-            // a3
-            // 
-            a3.Location = new Point(249, 50);
-            a3.Name = "a3";
-            a3.Size = new Size(90, 90);
-            a3.TabIndex = 2;
-            a3.UseVisualStyleBackColor = true;
-            a3.Visible = false;
-            a3.Click += BotonPosicion_Click;
-            // 
-            // a2
-            // 
-            a2.Location = new Point(153, 50);
-            a2.Name = "a2";
-            a2.Size = new Size(90, 90);
-            a2.TabIndex = 1;
-            a2.UseVisualStyleBackColor = true;
-            a2.Visible = false;
-            a2.Click += BotonPosicion_Click;
-            // 
-            // a1
-            // 
-            a1.Location = new Point(57, 50);
-            a1.Name = "a1";
-            a1.Size = new Size(90, 90);
-            a1.TabIndex = 0;
-            a1.UseVisualStyleBackColor = true;
-            a1.Visible = false;
-            a1.Click += BotonPosicion_Click;
-            // 
-            // btStartCoop
-            // 
-            btStartCoop.Location = new Point(12, 90);
-            btStartCoop.Name = "btStartCoop";
-            btStartCoop.Size = new Size(94, 29);
-            btStartCoop.TabIndex = 2;
-            btStartCoop.Text = "START";
-            btStartCoop.UseVisualStyleBackColor = true;
-            btStartCoop.Click += button2_Click;
-            // 
-            // timer1
-            // 
-            timer1.Interval = 1000;
+            // ConfigPanel
+            // 
+            ConfigPanel.BackColor = Color.FromArgb(200, 0, 0, 0);
+            ConfigPanel.Controls.Add(button1);
+            ConfigPanel.Controls.Add(label5);
+            ConfigPanel.Controls.Add(numericUpDown5);
+            ConfigPanel.Controls.Add(label4);
+            ConfigPanel.Controls.Add(numericUpDown4);
+            ConfigPanel.Controls.Add(label1);
+            ConfigPanel.Controls.Add(numericUpDown1);
+            ConfigPanel.Controls.Add(numericUpDown2);
+            ConfigPanel.Controls.Add(label2);
+            ConfigPanel.Controls.Add(numericUpDown3);
+            ConfigPanel.Controls.Add(label3);
+            ConfigPanel.Location = new Point(12, 38);
+            ConfigPanel.Name = "ConfigPanel";
+            ConfigPanel.Size = new Size(124, 202);
+            ConfigPanel.TabIndex = 23;
+            // 
+            // button1
+            // 
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.CornflowerBlue;
+            button1.Location = new Point(9, 161);
+            button1.Name = "button1";
+            button1.Size = new Size(105, 30);
+            button1.TabIndex = 11;
+            button1.Text = "Start";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.ForeColor = Color.CornflowerBlue;
+            label5.Location = new Point(3, 134);
+            label5.Name = "label5";
+            label5.Size = new Size(67, 15);
+            label5.TabIndex = 5;
+            label5.Text = "Bigger Ship";
+            // 
+            // numericUpDown5
+            // 
+            numericUpDown5.BackColor = Color.Black;
+            numericUpDown5.BorderStyle = BorderStyle.None;
+            numericUpDown5.ForeColor = Color.CornflowerBlue;
+            numericUpDown5.Location = new Point(74, 132);
+            numericUpDown5.Maximum = new decimal(new int[] { 4, 0, 0, 0 });
+            numericUpDown5.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown5.Name = "numericUpDown5";
+            numericUpDown5.Size = new Size(40, 19);
+            numericUpDown5.TabIndex = 10;
+            numericUpDown5.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = Color.CornflowerBlue;
+            label4.Location = new Point(3, 105);
+            label4.Name = "label4";
+            label4.Size = new Size(50, 15);
+            label4.TabIndex = 4;
+            label4.Text = "Big Ship";
+            // 
+            // numericUpDown4
+            // 
+            numericUpDown4.BackColor = Color.Black;
+            numericUpDown4.BorderStyle = BorderStyle.None;
+            numericUpDown4.ForeColor = Color.CornflowerBlue;
+            numericUpDown4.Location = new Point(74, 103);
+            numericUpDown4.Maximum = new decimal(new int[] { 4, 0, 0, 0 });
+            numericUpDown4.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown4.Name = "numericUpDown4";
+            numericUpDown4.Size = new Size(40, 19);
+            numericUpDown4.TabIndex = 9;
+            numericUpDown4.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = Color.CornflowerBlue;
+            label1.Location = new Point(3, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(54, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Map Size";
+            // 
+            // numericUpDown1
+            // 
+            numericUpDown1.BackColor = Color.Black;
+            numericUpDown1.BorderStyle = BorderStyle.None;
+            numericUpDown1.ForeColor = Color.CornflowerBlue;
+            numericUpDown1.Location = new Point(74, 14);
+            numericUpDown1.Maximum = new decimal(new int[] { 12, 0, 0, 0 });
+            numericUpDown1.Minimum = new decimal(new int[] { 6, 0, 0, 0 });
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(40, 19);
+            numericUpDown1.TabIndex = 6;
+            numericUpDown1.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            // 
+            // numericUpDown2
+            // 
+            numericUpDown2.BackColor = Color.Black;
+            numericUpDown2.BorderStyle = BorderStyle.None;
+            numericUpDown2.ForeColor = Color.CornflowerBlue;
+            numericUpDown2.Location = new Point(74, 43);
+            numericUpDown2.Maximum = new decimal(new int[] { 4, 0, 0, 0 });
+            numericUpDown2.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown2.Name = "numericUpDown2";
+            numericUpDown2.Size = new Size(40, 19);
+            numericUpDown2.TabIndex = 7;
+            numericUpDown2.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = Color.CornflowerBlue;
+            label2.Location = new Point(3, 45);
+            label2.Name = "label2";
+            label2.Size = new Size(62, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Small Ship";
+            // 
+            // numericUpDown3
+            // 
+            numericUpDown3.BackColor = Color.Black;
+            numericUpDown3.BorderStyle = BorderStyle.None;
+            numericUpDown3.ForeColor = Color.CornflowerBlue;
+            numericUpDown3.Location = new Point(74, 74);
+            numericUpDown3.Maximum = new decimal(new int[] { 4, 0, 0, 0 });
+            numericUpDown3.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown3.Name = "numericUpDown3";
+            numericUpDown3.Size = new Size(40, 19);
+            numericUpDown3.TabIndex = 8;
+            numericUpDown3.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = Color.CornflowerBlue;
+            label3.Location = new Point(3, 76);
+            label3.Name = "label3";
+            label3.Size = new Size(73, 15);
+            label3.TabIndex = 3;
+            label3.Text = "Normal Ship";
+            // 
+            // ll7
+            // 
+            ll7.AutoSize = true;
+            ll7.BackColor = Color.FromArgb(150, 0, 0, 0);
+            ll7.Font = new Font("OCR A Extended", 100F, FontStyle.Regular, GraphicsUnit.Point);
+            ll7.ForeColor = Color.CornflowerBlue;
+            ll7.Location = new Point(315, 200);
+            ll7.Name = "ll7";
+            ll7.Size = new Size(545, 139);
+            ll7.TabIndex = 22;
+            ll7.Text = "label7";
+            ll7.Visible = false;
+            // 
+            // shipPanel
+            // 
+            shipPanel.BackColor = Color.FromArgb(200, 0, 0, 0);
+            shipPanel.Controls.Add(button7);
+            shipPanel.Controls.Add(label6);
+            shipPanel.Controls.Add(button6);
+            shipPanel.Controls.Add(button5);
+            shipPanel.Controls.Add(button4);
+            shipPanel.Controls.Add(button3);
+            shipPanel.Controls.Add(button2);
+            shipPanel.Location = new Point(12, 246);
+            shipPanel.Name = "shipPanel";
+            shipPanel.Size = new Size(124, 257);
+            shipPanel.TabIndex = 21;
+            shipPanel.Visible = false;
+            // 
+            // button7
+            // 
+            button7.Enabled = false;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.ForeColor = Color.CornflowerBlue;
+            button7.Location = new Point(9, 216);
+            button7.Name = "button7";
+            button7.Size = new Size(105, 29);
+            button7.TabIndex = 6;
+            button7.Text = "Ready";
+            button7.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.ForeColor = Color.CornflowerBlue;
+            label6.Location = new Point(14, 7);
+            label6.Name = "label6";
+            label6.Size = new Size(74, 21);
+            label6.TabIndex = 5;
+            label6.Text = "Set Ships";
+            // 
+            // button6
+            // 
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.ForeColor = Color.CornflowerBlue;
+            button6.Location = new Point(9, 31);
+            button6.Name = "button6";
+            button6.Size = new Size(105, 31);
+            button6.TabIndex = 4;
+            button6.Text = "Horizontal";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.ForeColor = Color.CornflowerBlue;
+            button5.Location = new Point(9, 179);
+            button5.Name = "button5";
+            button5.Size = new Size(105, 31);
+            button5.TabIndex = 3;
+            button5.Text = "BiggerShip";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.ForeColor = Color.CornflowerBlue;
+            button4.Location = new Point(9, 142);
+            button4.Name = "button4";
+            button4.Size = new Size(105, 31);
+            button4.TabIndex = 2;
+            button4.Text = "BigShip";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.ForeColor = Color.CornflowerBlue;
+            button3.Location = new Point(9, 105);
+            button3.Name = "button3";
+            button3.Size = new Size(105, 31);
+            button3.TabIndex = 1;
+            button3.Text = "NormalShip";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.ForeColor = Color.CornflowerBlue;
+            button2.Location = new Point(9, 68);
+            button2.Name = "button2";
+            button2.Size = new Size(105, 31);
+            button2.TabIndex = 0;
+            button2.Text = "SmallShip";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // pPanel
+            // 
+            pPanel.BackColor = Color.FromArgb(100, 0, 0, 0);
+            pPanel.Location = new Point(663, 11);
+            pPanel.Name = "pPanel";
+            pPanel.Size = new Size(0, 0);
+            pPanel.TabIndex = 20;
+            pPanel.Visible = false;
+            // 
+            // plC
+            // 
+            plC.BackColor = Color.FromArgb(100, 0, 0, 0);
+            plC.Location = new Point(330, 11);
+            plC.Name = "plC";
+            plC.Size = new Size(515, 518);
+            plC.TabIndex = 19;
+            plC.Visible = false;
+            // 
+            // btSoloClose
+            // 
+            btSoloClose.BackColor = Color.FromArgb(200, 0, 0, 0);
+            btSoloClose.FlatStyle = FlatStyle.Flat;
+            btSoloClose.ForeColor = Color.CornflowerBlue;
+            btSoloClose.Location = new Point(12, 11);
+            btSoloClose.Margin = new Padding(3, 2, 3, 2);
+            btSoloClose.Name = "btSoloClose";
+            btSoloClose.Size = new Size(82, 22);
+            btSoloClose.TabIndex = 18;
+            btSoloClose.Text = "CERRAR";
+            btSoloClose.UseVisualStyleBackColor = false;
+            btSoloClose.Click += btSoloClose_Click;
             // 
             // TimeRush
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1264, 578);
-            Controls.Add(btStartCoop);
-            Controls.Add(panel1);
-            Controls.Add(btCoopClose);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(1175, 540);
+            Controls.Add(ConfigPanel);
+            Controls.Add(ll7);
+            Controls.Add(shipPanel);
+            Controls.Add(pPanel);
+            Controls.Add(plC);
+            Controls.Add(btSoloClose);
+            Margin = new Padding(3, 2, 3, 2);
+            MaximumSize = new Size(1191, 579);
+            MinimumSize = new Size(1191, 579);
             Name = "TimeRush";
             Text = "TimeRush";
-            panel1.ResumeLayout(false);
+            ConfigPanel.ResumeLayout(false);
+            ConfigPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
+            shipPanel.ResumeLayout(false);
+            shipPanel.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Button btCoopClose;
         private Panel panel1;
         private Button d10;
         private Button d9;
@@ -606,7 +419,30 @@
         private Button a3;
         private Button a2;
         private Button a1;
-        private Button btStartCoop;
         private System.Windows.Forms.Timer timer1;
+        private Panel ConfigPanel;
+        private Button button1;
+        private Label label5;
+        private NumericUpDown numericUpDown5;
+        private Label label4;
+        private NumericUpDown numericUpDown4;
+        private Label label1;
+        private NumericUpDown numericUpDown1;
+        private NumericUpDown numericUpDown2;
+        private Label label2;
+        private NumericUpDown numericUpDown3;
+        private Label label3;
+        private Label ll7;
+        private Panel shipPanel;
+        private Button button7;
+        private Label label6;
+        private Button button6;
+        private Button button5;
+        private Button button4;
+        private Button button3;
+        private Button button2;
+        private Panel pPanel;
+        private Panel plC;
+        private Button btSoloClose;
     }
 }
